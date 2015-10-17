@@ -1,6 +1,6 @@
 {
   "name": "generous",
-  "version": "0.0.5b08z5",
+  "version": "0.0.6",
   "description": "Lightweight code comment parsing & API doc generation node module",
   "main": "dist/task/generous.task.min.js",
   "repository": {
