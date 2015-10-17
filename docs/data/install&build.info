@@ -1,0 +1,48 @@
+
+
+/**
+ * @generous
+ * @type documentation
+ * @name Installation
+ * @parent Installation & Build
+ * @description
+ Install the package directly from NPM
+ `npm install generous --save-dev`
+ */
+
+
+/**
+ * @generous
+ * @type documentation
+ * @name Build Options
+ * @parent Installation & Build
+ * @description
+ */
+
+
+/**
+ * @generous
+ * @type documentation
+ * @name Grunt & Gulp
+ * @parent Installation & Build
+ * @description
+### Task Runners
+
+#### Gulp
+
+```javascript
+var gulp = require('gulp'),
+    generous = require('generous');
+gulp.task('generous', function () {
+    generous(options); // where 'options' denotes required options
+});
+```
+
+#### Grunt
+```javascript
+grunt.registerTask('generous', 'Grunt task to run generous', function() {
+  var generous = require('generous');
+  generous(options); // where 'options' denotes required options
+});
+```
+ */

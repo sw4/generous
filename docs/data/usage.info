@@ -1,0 +1,25 @@
+
+/**
+ * @generous
+ * @type documentation
+ * @name Introduction
+ * @parent Usage
+ * @description
+ Out of the box generous supports a number of comment tags it can recognise and parse.
+ Every generous comment should be placed within `/**/` comment blocks, and each tag to
+ parse should appear on a new line, the first of which should be `@generous`, unless you
+ have specified another denominator under the options parsed to the module to run with.
+ */
+
+
+/**
+ * @generous
+ * @type documentation
+ * @name Tags
+ * @parent Usage
+ * @description
+ Out of the box generous supports a number of comment tags it can recognise and parse.
+ Every generous comment should be placed within `/**/` comment blocks, and each tag to
+ parse should appear on a new line, the first of which should be `@generous`, unless you
+ have specified another denominator under the options parsed to the module to run with.
+ */
