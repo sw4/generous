@@ -1,6 +1,6 @@
 
 # generous
-Lightweight code comment parsing & API doc generation node module.
+[Full documentation can be found here](http://sw4.github.io/generous)
 
 
 
