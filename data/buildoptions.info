@@ -1,0 +1,75 @@
+/**
+ * @generous
+ * @type documentation
+ * @name src
+ * @parent Build Options
+ * @description
+ A glob of source files to scan. Files can be of ANY type, so long as generous content
+ is placed within generous comment blocks
+ */
+
+/**
+* @generous
+* @type documentation
+* @name dest
+* @parent Build Options
+* @description
+String denoting the destination folder to save generated generous application
+*/
+
+/**
+* @generous
+* @type documentation
+* @name title
+* @parent Build Options
+* @description
+String or HTML to appear in the top left of the generous app, defaults to
+'generous'
+*/
+
+/**
+* @generous
+* @type documentation
+* @name denominator
+* @parent Build Options
+* @description
+Denominator for comments, defaults to **generous** e.g. *@generous*
+in a source file indicates the comment should be parsed. If you have existing
+comments targeting other document comment parsers, simply change to the term required,
+e.g. **ngdoc**, **jsdoc**. Note that in the output data json, the denominator tag will
+be populated with the source file (relative path) being parsed as well as the 'to'
+and 'from' line numbers.
+*/
+
+/**
+* @generous
+* @type documentation
+* @name template
+* @parent Build Options
+* @description
+String denoting a custom html docs template, see `dist/app/index.html` for example
+*/
+
+/**
+* @generous
+* @type documentation
+* @name sourceLink
+* @parent Build Options
+* @description
+Boolean, defaults to `true` and indicates whether generated content should link back
+to its source file, and whether source browsing should be enabled within generous. This
+can also be set for each item independently using the `@sourceLink` tag.
+*/
+
+
+
+/**
+* @generous
+* @type documentation
+* @name sourceEditor
+* @parent Build Options
+* @description
+String denoting the 3rd party code editor to use to allow users to edit code examples,
+possible values include **plunker** (or *plnkr*), **JSFiddle** or **JSBin**. Note that any
+derivation of these with whitespace or capitals can also be used.
+*/

@@ -1,0 +1,132 @@
+/**
+ * @generous
+ * @type documentation
+ * @name @generous
+ * @parent Tags
+ * @description
+ * Indicates the beginning of a generous comment block for parsing
+ * (can be changed by setting `options.denominator`)
+ */
+
+/**
+ * @generous
+ * @type documentation
+ * @name @name
+ * @parent Tags
+ * @description
+ * The name of the item being parsed
+ */
+
+
+/**
+ * @generous
+ * @type documentation
+ * @name @type
+ * @parent Tags
+ * @description
+ * Denotes the type of content, can be anything. The default template
+ * clusters items by type when showing children of an item
+ */
+
+
+/**
+ * @generous
+ * @type documentation
+ * @name @parent
+ * @parent Tags
+ * @description
+ * Indicates this item is the child of another, the generous application
+ * will mark hierarchies as necessary, with the main menu showing up to three
+ * levels- child items are listed
+ */
+
+/**
+ * @generous
+ * @type documentation
+ * @name @description
+ * @parent Tags
+ * @description
+ A description of the item, by default
+ it can contain [markdown](http://daringfireball.net/projects/markdown/).
+ */
+
+
+/**
+ * @generous
+ * @type documentation
+ * @name @sourceLink
+ * @parent Tags
+ * @description
+Whether to show the source file and lines of the item, and allow source
+browsing. This tag is overridden by the top level `sourceLink` build
+option.
+ */
+
+/**
+ * @generous
+ * @type documentation
+ * @name @param
+ * @parent Tags
+ * @description
+ Should be in the format `@param {type} name description`, the description section
+ can contain markdown. Nested parameters (up to one level) can be denoted by setting
+ the parameter name to `parent.child` where parent is the top level parameter. You
+ are able to denote whether a parameter is optional by using the `=` after the
+ type designation
+ * @param {bool=} param1 this is an example parameter
+ * @param {object} param2 this is an example parameter with children
+ * @param {number} param2.param1Child this is an example child parameter
+ */
+
+/**
+ * @generous
+ * @type documentation
+ * @name @example
+ * @parent Tags
+ * @description
+ Generous supports inline, live examples with links to an
+ editable JSBin version, please see below for example output,
+ inspect the originating source for the syntax used
+ * @example
+ <html>
+   <generous-logo></generous-logo><span class='gen__span'>generous</span>
+ </html>
+ <css>
+  body{
+   background:#333;
+   padding:20px;
+   color:#fff;
+   font-size:20px;
+  }
+  .gen__span{
+   position: relative;
+   display: inline-block;
+   top: -18px;
+   margin-left: 2px;
+   opacity: .8;
+  }
+ </css>
+ <javascript>
+  angular.module('example', [])
+   .directive('generousLogo', function(){
+    return{
+     restrict:'E',
+     template: "<span class='gen__logo'>" +
+       "<span class='gen__logoShardGroup gen__logoShardGroup1'>" +
+         "<span class='gen__logoShard gen__logoShard1'></span>" +
+         "<span class='gen__logoShard gen__logoShard2'></span>" +
+         "<span class='gen__logoShard gen__logoShard3'></span>" +
+         "<span class='gen__logoShard gen__logoShard4'></span>" +
+       "</span>" +
+     "</span>"
+    };
+   });
+   angular.element(document).ready(function() {
+     angular.bootstrap(document, ['example']);
+   });
+ </javascript>
+ <head>
+  <link rel="stylesheet" href="css/generous.app.min.css" />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js'></script>
+ </head>
+ */
