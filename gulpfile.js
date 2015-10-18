@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    del = require('del'),
     plugins = require("gulp-load-plugins")({
         pattern: ['gulp-*', 'gulp.*'],
         replaceString: /\bgulp[\-.]/
@@ -7,9 +8,10 @@ var gulp = require('gulp'),
 
 
 gulp.task('clean', function () {
-    return true;
-    return gulp.src(['dist', 'docs/app'])
-        .pipe(plugins.rimraf({ force: true }));
+    del(['dist', 'docs/app'], {force:true}).then(function (paths) {
+        console.log('Deleted files/folders:\n', paths.join('\n'));
+        return true;
+    });
 });
 
 gulp.task('app:beautify', function () {
@@ -70,8 +72,11 @@ gulp.task('app:styles', function () {
 });
 
 gulp.task('docs:deploy', function() {
+
+    del(['.publish'], {force:true}).then(function () {});
     return gulp.src('docs/**/*')
         .pipe(plugins.ghPages());
+
 });
 
 gulp.task('app', ['clean'], function () {
