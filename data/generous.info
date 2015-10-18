@@ -5,14 +5,13 @@
  * @description
 Lightweight code comment parsing & API doc generation node module.
 
-generous was written to address the perceived restrictive / inaccessible
-approach of other comment parsers, in that you are limited to using
-specific tags to indicate the relationships and purpose of content.
+generous was written to add comprehensive, free-form document generation as a
+seamless part of your build process.
 
-Typically such parsers therefore impose a structure onto your code which
+Typically code comment parsers impose a strict structure onto your code which
 may or may not fit (e.g. the difficulties of using JSDoc to document angular,
 hence ngdocs creation). generous allows you to easily denote relationships
-between anything as well as determine your own tags to be parsed. In addition,
+between any two items as well as determine your own tags to be parsed. In addition,
 it allows you to use existing comment structures without too much overhead.
  */
 
