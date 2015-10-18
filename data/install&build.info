@@ -26,12 +26,10 @@
  * @name Command line
  * @parent Installation & Build
  * @description
- * generous can be run directly from the command line by passing
- * build options as command line parameters.
- *
- * #### Example
- *
- * `node generous.task.min.js --src=directory/**/*.js --dest=output/directory`
+generous can be run directly from the command line by passing
+build options as command line parameters.
+
+Example: `node generous.task.min.js --src=directory/**/*.js --dest=output/directory`
  */
 
 
