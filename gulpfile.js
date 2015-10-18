@@ -70,7 +70,7 @@ gulp.task('app:styles', function () {
 });
 
 gulp.task('docs:deploy', function() {
-    return gulp.src('docs/app/**/*')
+    return gulp.src('docs/**/*')
         .pipe(plugins.ghPages());
 });
 
