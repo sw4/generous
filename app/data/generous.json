@@ -20,21 +20,6 @@
       "generous": {
         "source": "../data/generous.info",
         "line": {
-          "from": 1,
-          "to": 16
-        }
-      },
-      "type": "documentation",
-      "name": "About",
-      "description": "Lightweight code comment parsing & API doc generation node module.\n\ngenerous was written to add comprehensive, free-form document generation as a\nseamless part of your build process.\n\nTypically code comment parsers impose a strict structure onto your code which\nmay or may not fit (e.g. the difficulties of using JSDoc to document angular,\nhence ngdocs creation). generous allows you to easily denote relationships\nbetween any two items as well as determine your own tags to be parsed. In addition,\nit allows you to use existing comment structures without too much overhead.",
-      "shortName": "about",
-      "id": "about",
-      "example": null
-    },
-    {
-      "generous": {
-        "source": "../data/generous.info",
-        "line": {
           "from": 18,
           "to": 22
         }
@@ -196,13 +181,13 @@
             "source": "../data/install&build.info",
             "line": {
               "from": 23,
-              "to": 32
+              "to": 34
             }
           },
           "type": "documentation",
           "name": "Command line",
           "parent": "Installation & Build",
-          "description": "generous can be run directly from the command line by passing\nbuild options as command line parameters.\n#### Example",
+          "description": "generous can be run directly from the command line by passing\nbuild options as command line parameters.\n\n#### Example",
           "shortName": "commandLine",
           "id": "commandLine",
           "example": null
@@ -211,8 +196,8 @@
           "generous": {
             "source": "../data/install&build.info",
             "line": {
-              "from": 36,
-              "to": 61
+              "from": 38,
+              "to": 63
             }
           },
           "type": "documentation",
@@ -229,6 +214,21 @@
       "generous": {
         "source": "../data/generous.info",
         "line": {
+          "from": 1,
+          "to": 16
+        }
+      },
+      "type": "documentation",
+      "name": "About",
+      "description": "Lightweight code comment parsing & API doc generation node module.\n\ngenerous was written to add comprehensive, free-form document generation as a\nseamless part of your build process.\n\nTypically code comment parsers impose a strict structure onto your code which\nmay or may not fit (e.g. the difficulties of using JSDoc to document angular,\nhence ngdocs creation). generous allows you to easily denote relationships\nbetween any two items as well as determine your own tags to be parsed. In addition,\nit allows you to use existing comment structures without too much overhead.",
+      "shortName": "about",
+      "id": "about",
+      "example": null
+    },
+    {
+      "generous": {
+        "source": "../data/generous.info",
+        "line": {
           "from": 25,
           "to": 29
         }
@@ -239,6 +239,22 @@
       "id": "usage",
       "example": null,
       "children": [
+        {
+          "generous": {
+            "source": "../data/usage.info",
+            "line": {
+              "from": 2,
+              "to": 9
+            }
+          },
+          "type": "documentation",
+          "name": "Introduction",
+          "parent": "Usage",
+          "description": "Out of the box generous supports a number of comment tags it can recognise and parse.",
+          "shortName": "introduction",
+          "id": "introduction",
+          "example": null
+        },
         {
           "generous": {
             "source": "../data/usage.info",
@@ -412,22 +428,6 @@
               "id": "@Example"
             }
           ]
-        },
-        {
-          "generous": {
-            "source": "../data/usage.info",
-            "line": {
-              "from": 2,
-              "to": 9
-            }
-          },
-          "type": "documentation",
-          "name": "Introduction",
-          "parent": "Usage",
-          "description": "Out of the box generous supports a number of comment tags it can recognise and parse.",
-          "shortName": "introduction",
-          "id": "introduction",
-          "example": null
         }
       ]
     }
