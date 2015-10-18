@@ -1,5 +1,6 @@
 var gulp = require('gulp'),
     del = require('del'),
+    runSeq = require('run-sequence'),
     plugins = require("gulp-load-plugins")({
         pattern: ['gulp-*', 'gulp.*'],
         replaceString: /\bgulp[\-.]/
@@ -71,20 +72,21 @@ gulp.task('app:styles', function () {
         .pipe(gulp.dest('dist/app/css/'));
 });
 
-gulp.task('docs:deploy', function() {
-
+gulp.task('docs',['docs:run'], function() {
     del(['.publish'], {force:true}).then(function () {});
     return gulp.src('docs/**/*')
         .pipe(plugins.ghPages());
 
 });
+gulp.task('docs:run', plugins.shell.task([
+    'node dist/task/generous.task.min.js --src=docs/data/**/*.* --dest=docs/app'
+]));
 
-gulp.task('app', ['clean'], function () {
-    return true;
-});
 
-gulp.task('default', ['app', 'app:beautify', 'app:libs', 'app:js', 'app:styles', 'app:html', 'app:data', 'task:js'], function () {
-    return true;
+gulp.task('default', function (callback) {
+    runSeq('clean',
+        'app:beautify',
+        ['app:libs', 'app:js', 'app:styles', 'app:html', 'app:data', 'task:js'], 'docs', callback);
 });
 gulp.task('task:js', function () {
     return gulp.src([ 'src/task/**/*.js'], { base: '/' })

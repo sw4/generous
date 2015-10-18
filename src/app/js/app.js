@@ -449,10 +449,10 @@ angular.module('generous', ['hljs'])
                 case "plunker":
                 case "plnkr":
                 default:
-                    postData['description'] = $scope.view.hash;
+                    postData.description = $scope.view.hash;
                     postData['files[index.html]'] = exampleCode.html;
                     if (exampleCode.css) {
-                        postData['files[styles.css]'] = exampleCode.css;;
+                        postData['files[styles.css]'] = exampleCode.css;
                     }
                     if (exampleCode.js) {
                         postData['files[javascript.js]'] = exampleCode.js;

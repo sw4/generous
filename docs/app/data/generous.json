@@ -1,10 +1,6 @@
 {
   "options": {
-    "src": [
-      "docs/data/**/*.*"
-    ],
     "dest": "docs/app",
-    "sourceEditor": "jsfiddle",
     "denominator": "generous",
     "example": [
       "html",
@@ -13,7 +9,11 @@
       "head"
     ],
     "sourceLink": true,
-    "title": "generous"
+    "src": [
+      "docs/data/**/*.*"
+    ],
+    "title": "generous",
+    "sourceEditor": "plunker"
   },
   "data": [
     {

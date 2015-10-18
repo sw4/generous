@@ -4,7 +4,8 @@ var glob = require("glob"),
     chalk=require('chalk'),
     NEW_LINE = /\n\r?/,
     docs=[],
-    fs = require('fs-extra');
+    fs = require('fs-extra'),
+    argv = require('minimist')(process.argv.slice(2));
 
 
 var GENEROUS=[];
@@ -251,12 +252,13 @@ function keysrt(key,desc) {
 
 
 function generous(opt){
+
     opt=opt || {};
-    opt.dest=opt.dest || 'generous';
+    opt.dest=opt.dest || argv.dest || 'generous';
     opt.denominator=opt.denominator || 'generous';
     opt.example=opt.example||['html', 'javascript','css','head'];
     opt.sourceLink=opt.sourceLink || true;
-    opt.src=opt.src;
+    opt.src=argv.src || opt.src;
     opt.title=opt.title||'generous';
     opt.dest.replace(/\/+$/, "");
     opt.sourceEditor=opt.sourceEditor || 'plunker';
@@ -328,6 +330,8 @@ function generous(opt){
         });
     });
 }
-generous({src:'docs/data/**/*.*', dest:'docs/app', sourceEditor:'jsfiddle'});
+if(argv.src){
+    generous();
+}
 module.exports = generous;
 
