@@ -327,7 +327,7 @@ function generous(opt){
 
         });
     });
-}/*
-generous({src:'docs/data/!**!/!*.*', dest:'docs/app'});*/
+}
+generous({src:'docs/data/**/*.*', dest:'docs/app', sourceEditor:'jsfiddle'});
 module.exports = generous;
 

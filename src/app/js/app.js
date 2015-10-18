@@ -440,6 +440,7 @@ angular.module('generous', ['hljs'])
             switch (svc) {
                 case "jsbin":
                     svcLink = "http://jsbin.com";
+                    postData = exampleCode;
                     break;
                 case "jsfiddle":
                     svcLink = "http://jsfiddle.net/api/post/library/pure/";
@@ -448,12 +449,13 @@ angular.module('generous', ['hljs'])
                 case "plunker":
                 case "plnkr":
                 default:
-                    postData['files[index.html]'] = postData.html;
-                    if (postData.css) {
-                        postData['files[styles.css]'] = postData.css;
+                    postData['description'] = $scope.view.hash;
+                    postData['files[index.html]'] = exampleCode.html;
+                    if (exampleCode.css) {
+                        postData['files[styles.css]'] = exampleCode.css;;
                     }
-                    if (postData.js) {
-                        postData['files[javascript.js]'] = postData.js;
+                    if (exampleCode.js) {
+                        postData['files[javascript.js]'] = exampleCode.js;
                     }
                     svcLink = "http://plnkr.co/edit/?p=preview";
                     break;

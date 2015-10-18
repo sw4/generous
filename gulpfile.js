@@ -69,6 +69,11 @@ gulp.task('app:styles', function () {
         .pipe(gulp.dest('dist/app/css/'));
 });
 
+gulp.task('docs:deploy', function() {
+    return gulp.src('docs/app/**/*')
+        .pipe(plugins.ghPages());
+});
+
 gulp.task('app', ['clean'], function () {
     return true;
 });

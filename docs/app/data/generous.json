@@ -4,6 +4,7 @@
       "docs/data/**/*.*"
     ],
     "dest": "docs/app",
+    "sourceEditor": "jsfiddle",
     "denominator": "generous",
     "example": [
       "html",
@@ -12,8 +13,7 @@
       "head"
     ],
     "sourceLink": true,
-    "title": "generous",
-    "sourceEditor": "plunker"
+    "title": "generous"
   },
   "data": [
     {
@@ -45,22 +45,6 @@
       "id": "installation&Build",
       "example": null,
       "children": [
-        {
-          "generous": {
-            "source": "../data/install&build.info",
-            "line": {
-              "from": 3,
-              "to": 11
-            }
-          },
-          "type": "documentation",
-          "name": "Installation",
-          "parent": "Installation & Build",
-          "description": "Install the package directly from NPM\n`npm install generous --save-dev`",
-          "shortName": "installation",
-          "id": "installation",
-          "example": null
-        },
         {
           "generous": {
             "source": "../data/install&build.info",
@@ -195,6 +179,22 @@
           "generous": {
             "source": "../data/install&build.info",
             "line": {
+              "from": 3,
+              "to": 11
+            }
+          },
+          "type": "documentation",
+          "name": "Installation",
+          "parent": "Installation & Build",
+          "description": "Install the package directly from NPM\n`npm install generous --save-dev`",
+          "shortName": "installation",
+          "id": "installation",
+          "example": null
+        },
+        {
+          "generous": {
+            "source": "../data/install&build.info",
+            "line": {
               "from": 23,
               "to": 48
             }
@@ -223,6 +223,22 @@
       "id": "usage",
       "example": null,
       "children": [
+        {
+          "generous": {
+            "source": "../data/usage.info",
+            "line": {
+              "from": 2,
+              "to": 9
+            }
+          },
+          "type": "documentation",
+          "name": "Introduction",
+          "parent": "Usage",
+          "description": "Out of the box generous supports a number of comment tags it can recognise and parse.",
+          "shortName": "introduction",
+          "id": "introduction",
+          "example": null
+        },
         {
           "generous": {
             "source": "../data/usage.info",
@@ -396,22 +412,6 @@
               "id": "@Example"
             }
           ]
-        },
-        {
-          "generous": {
-            "source": "../data/usage.info",
-            "line": {
-              "from": 2,
-              "to": 9
-            }
-          },
-          "type": "documentation",
-          "name": "Introduction",
-          "parent": "Usage",
-          "description": "Out of the box generous supports a number of comment tags it can recognise and parse.",
-          "shortName": "introduction",
-          "id": "introduction",
-          "example": null
         }
       ]
     }
