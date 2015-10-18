@@ -30,7 +30,7 @@ generous can be run directly from the command line by passing
 build options as command line parameters.
 
 ```
-node generous.task.min.js --src=directory/**/*.js --dest=output/directory``
+node generous.task.min.js --src=directory/**/*.js --dest=output/directory
 ```
  */
 
