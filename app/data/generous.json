@@ -49,6 +49,22 @@
           "generous": {
             "source": "../data/install&build.info",
             "line": {
+              "from": 3,
+              "to": 11
+            }
+          },
+          "type": "documentation",
+          "name": "Installation",
+          "parent": "Installation & Build",
+          "description": "Install the package directly from NPM\n`npm install generous --save-dev`",
+          "shortName": "installation",
+          "id": "installation",
+          "example": null
+        },
+        {
+          "generous": {
+            "source": "../data/install&build.info",
+            "line": {
               "from": 14,
               "to": 20
             }
@@ -179,22 +195,6 @@
           "generous": {
             "source": "../data/install&build.info",
             "line": {
-              "from": 3,
-              "to": 11
-            }
-          },
-          "type": "documentation",
-          "name": "Installation",
-          "parent": "Installation & Build",
-          "description": "Install the package directly from NPM\n`npm install generous --save-dev`",
-          "shortName": "installation",
-          "id": "installation",
-          "example": null
-        },
-        {
-          "generous": {
-            "source": "../data/install&build.info",
-            "line": {
               "from": 23,
               "to": 48
             }
@@ -259,22 +259,6 @@
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
-                  "from": 1,
-                  "to": 9
-                }
-              },
-              "type": "documentation",
-              "name": "@generous",
-              "parent": "Tags",
-              "description": "Indicates the beginning of a generous comment block for parsing\n(can be changed by setting `options.denominator`)",
-              "shortName": "@Generous",
-              "id": "@Generous",
-              "example": null
-            },
-            {
-              "generous": {
-                "source": "../data/tags.info",
-                "line": {
                   "from": 11,
                   "to": 18
                 }
@@ -285,6 +269,22 @@
               "description": "The name of the item being parsed",
               "shortName": "@Name",
               "id": "@Name",
+              "example": null
+            },
+            {
+              "generous": {
+                "source": "../data/tags.info",
+                "line": {
+                  "from": 1,
+                  "to": 9
+                }
+              },
+              "type": "documentation",
+              "name": "@generous",
+              "parent": "Tags",
+              "description": "Indicates the beginning of a generous comment block for parsing\n(can be changed by setting `options.denominator`)",
+              "shortName": "@Generous",
+              "id": "@Generous",
               "example": null
             },
             {
