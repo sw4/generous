@@ -275,6 +275,22 @@
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
+                  "from": 21,
+                  "to": 29
+                }
+              },
+              "type": "documentation",
+              "name": "@type",
+              "parent": "Tags",
+              "description": "Denotes the type of content, can be anything. The default template\nclusters items by type when showing children of an item",
+              "shortName": "@Type",
+              "id": "@Type",
+              "example": null
+            },
+            {
+              "generous": {
+                "source": "../data/tags.info",
+                "line": {
                   "from": 1,
                   "to": 9
                 }
@@ -301,22 +317,6 @@
               "description": "The name of the item being parsed",
               "shortName": "@Name",
               "id": "@Name",
-              "example": null
-            },
-            {
-              "generous": {
-                "source": "../data/tags.info",
-                "line": {
-                  "from": 21,
-                  "to": 29
-                }
-              },
-              "type": "documentation",
-              "name": "@type",
-              "parent": "Tags",
-              "description": "Denotes the type of content, can be anything. The default template\nclusters items by type when showing children of an item",
-              "shortName": "@Type",
-              "id": "@Type",
               "example": null
             },
             {

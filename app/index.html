@@ -84,8 +84,6 @@
                 <div ng-repeat="related in view.children track by $index">
                     <h4 ng-if="view.children[$index-1].type !== related.type"><gen-anchor link="'related_'+related.type+'s'">{{related.type}}s</gen-anchor></h4>
                     <a href ng-click="updateView(related.hash)">{{related.name}}</a>
-                    <br />
-                    <br />
                 </div>
             </section>
             <section ng-if="view.returns">
