@@ -86,7 +86,13 @@ option.
  * @description
  Generous supports inline, live examples with links to an
  editable JSBin version, please see below for example output,
- inspect the originating source for the syntax used
+ inspect the originating source for the syntax used. By default,
+ anyd `script` tags in the head section of an example will be
+ inlined when viewing the example within the generous application
+ context (not when using a third party editor). This ensures
+ the application has access to the resource in the right context.
+ If you do not wish external scripts to be fetched and inlined
+ (but linked to) add the attribute `embed="false"`.
  * @example
  <html>
    <generous-logo></generous-logo><span class='gen__span'>generous</span>
