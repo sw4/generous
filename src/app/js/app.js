@@ -17,19 +17,19 @@ angular.module('generous', ['hljs'])
             restrict: 'E',
             replace: true,
             template: "<span class='gen__logo'>" +
-                "<span class='gen__logoShardGroup gen__logoShardGroup1'>" +
-                "<span class='gen__logoShard gen__logoShard1'></span>" +
-                "<span class='gen__logoShard gen__logoShard2'></span>" +
-                "<span class='gen__logoShard gen__logoShard3'></span>" +
-                "<span class='gen__logoShard gen__logoShard4'></span>" +
-                "</span>" +
-                "<span class='gen__logoShardGroup gen__logoShardGroup2'>" +
-                "<span class='gen__logoShard gen__logoShard1'></span>" +
-                "<span class='gen__logoShard gen__logoShard2'></span>" +
-                "<span class='gen__logoShard gen__logoShard3'></span>" +
-                "<span class='gen__logoShard gen__logoShard4'></span>" +
-                "</span>" +
-                "</span>"
+            "<span class='gen__logoShardGroup gen__logoShardGroup1'>" +
+            "<span class='gen__logoShard gen__logoShard1'></span>" +
+            "<span class='gen__logoShard gen__logoShard2'></span>" +
+            "<span class='gen__logoShard gen__logoShard3'></span>" +
+            "<span class='gen__logoShard gen__logoShard4'></span>" +
+            "</span>" +
+            "<span class='gen__logoShardGroup gen__logoShardGroup2'>" +
+            "<span class='gen__logoShard gen__logoShard1'></span>" +
+            "<span class='gen__logoShard gen__logoShard2'></span>" +
+            "<span class='gen__logoShard gen__logoShard3'></span>" +
+            "<span class='gen__logoShard gen__logoShard4'></span>" +
+            "</span>" +
+            "</span>"
         };
     }])
     .service('errorSvc', function() {
@@ -218,7 +218,8 @@ angular.module('generous', ['hljs'])
                 var iframe = el[0].getElementsByTagName('iframe')[0],
                     head = iframe.contentDocument.head,
                     body = iframe.contentDocument.body,
-                    scripts = [];
+                    scripts = [],
+                    embeds= [];
                 iframe.style.opacity = '0';
                 if (scope.view.example.head) {
                     scope.getExampleLoadingMsg.push({
@@ -226,15 +227,34 @@ angular.module('generous', ['hljs'])
                     });
                     var tmp = document.createElement('div');
                     tmp.innerHTML = scope.view.example.head;
-                    for (var n = tmp.children.length; n--;) {
-                        if (tmp.children[n].tagName.toLowerCase() !== 'script' || (tmp.children[n].tagName.toLowerCase() === 'script' && !tmp.children[n].src)) {
+                    for (var n = 0;n<tmp.children.length; n++) {
+                        if (tmp.children[n].tagName.toLowerCase() !== 'script') {
                             head.appendChild(tmp.children[n]);
+                        }else if(tmp.children[n].tagName.toLowerCase() === 'script' && !tmp.children[n].hasAttribute('embed')){
+                            // javscript, not being embedded- so include like for like
+                            scripts.push(tmp.children[n]);
                         }
                     }
+
+                    function iterateScript(n){
+                        n=n||0;
+                        if(n===scripts.length){
+                            return;
+                        }else if(scripts[n]){
+                            if(scripts[n].src){ // link
+                                injectJavascript(scripts[n].src);
+                            }else{ // inlined
+                                injectJavascript(scripts[n].innerHTML, true);
+                            }
+                            iterateScript(n+1);
+                        }
+                    }
+                    iterateScript();
+
                     [].forEach.call(tmp.getElementsByTagName('script'), function(script) {
-                        if(script.src){
-							scripts.push(script.src);
-						}
+                        if(script.hasAttribute('embed') && script.src){ // embed the source of the external script, dont link
+                            embeds.push(script.src, false);
+                        }
                     });
                 }
                 /*
@@ -246,10 +266,14 @@ angular.module('generous', ['hljs'])
                  * included scripts may note resolve correctly) and inject any passed Javascript before adding
                  * it to the head section of the example iFrame.
                  */
-                function injectJavascript(javascript) {
+                function injectJavascript(source, embed) {
                     var script = iframe.contentWindow.document.createElement("script");
                     script.type = "text/javascript";
-                    script.innerHTML = javascript;
+                    if(embed){
+                        script.innerHTML = source;
+                    }else{
+                        script.src = source;
+                    }
                     head.appendChild(script);
                 }
                 /*
@@ -265,25 +289,25 @@ angular.module('generous', ['hljs'])
                 var inlineScripts = function(url) {
                     var deferred = $q.defer();
                     $http.get(url).
-                    then(function(response) {
-                        scope.getExampleLoadingMsg.push({
-                            text: 'Loading ' + url
+                        then(function(response) {
+                            scope.getExampleLoadingMsg.push({
+                                text: 'Loading ' + url
+                            });
+                            injectJavascript(response.data, true);
+                            deferred.resolve(response);
+                        }, function(err) {
+                            scope.getExampleLoadingMsg.push({
+                                text: 'Failed to load ' + url,
+                                error: true
+                            });
+                            deferred.reject(err);
                         });
-                        injectJavascript(response.data);
-                        deferred.resolve(response);
-                    }, function(err) {
-                        scope.getExampleLoadingMsg.push({
-                            text: 'Failed to load ' + url,
-                            error: true
-                        });
-                        deferred.reject(err);
-                    });
                     return deferred.promise;
                 };
 
-                if (scripts.length > 0) {
+                if (embeds.length > 0) {
                     angular.element(document.getElementById('gen__logo')).addClass('gen__anim_phaseOut gen__anim_loop');
-                    $q.all(scripts.map(inlineScripts)).then(function() {
+                    $q.all(embeds.map(inlineScripts)).then(function() {
                         resolveContent();
                     });
                 } else {
@@ -304,7 +328,7 @@ angular.module('generous', ['hljs'])
                         scope.getExampleLoadingMsg.push({
                             text: 'Javascript loaded'
                         });
-                        injectJavascript(scope.view.example.javascript);
+                        injectJavascript(scope.view.example.javascript, true);
                     }
 
                     if (scope.view.example.css) {
@@ -421,20 +445,20 @@ angular.module('generous', ['hljs'])
                 exampleCode.css = $scope.view.example.css;
             }
             exampleCode.html = '<!doctype html>\n' +
-                '<html>\n' +
-                '  <head>\n';
+            '<html>\n' +
+            '  <head>\n';
             if ($scope.view.example.head) {
                 exampleCode.html += $scope.view.example.head + '\n';
             }
             exampleCode.html += '  </head>\n' +
-                '  <body>\n\n';
+            '  <body>\n\n';
 
             if ($scope.view.example.html) {
                 exampleCode.html += $scope.view.example.html;
             }
 
             exampleCode.html += '  </body>\n' +
-                '</html>\n';
+            '</html>\n';
 
             var svc = $scope.model.options.sourceEditor.toLowerCase().replace(/\s/g, ""),
                 svcLink;
@@ -490,19 +514,19 @@ angular.module('generous', ['hljs'])
             }
             angular.element(document.getElementById('gen__logo')).addClass('gen__anim_phaseOut gen__anim_loop');
             $http.get(src).
-            then(function(response) {
-                //   $timeout(function(){
-                $scope.genSourceCode = response.data;
-                $scope.genViewSource = src;
-                $timeout(function() {
-                    sourceView();
+                then(function(response) {
+                    //   $timeout(function(){
+                    $scope.genSourceCode = response.data;
+                    $scope.genViewSource = src;
+                    $timeout(function() {
+                        sourceView();
+                    });
+                    angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
+                }, function(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
                 });
-                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-            }, function(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-            });
         };
         $scope.updateView = function(item) {
             if (typeof item === 'string') {
@@ -556,18 +580,18 @@ angular.module('generous', ['hljs'])
         errorSvc.init($scope);
         angular.element(document.getElementById('gen__logo')).addClass('gen__anim_phaseOut gen__anim_loop');
         $http.get('data/generous.json').
-        then(function(response) {
-            angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-            $scope.model = response.data;
-            hashMap($scope.model.data);
-            $scope.updateView($location.path() || $scope.model.data[0].hash);
-            $scope.$on('$locationChangeStart', function(event, next, current) {
-                // if the page has loaded with a route- now the hash lookup is available, load the correct item
-                if ($location.path()) {
-                    $scope.updateView($location.path());
-                }
+            then(function(response) {
+                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
+                $scope.model = response.data;
+                hashMap($scope.model.data);
+                $scope.updateView($location.path() || $scope.model.data[0].hash);
+                $scope.$on('$locationChangeStart', function(event, next, current) {
+                    // if the page has loaded with a route- now the hash lookup is available, load the correct item
+                    if ($location.path()) {
+                        $scope.updateView($location.path());
+                    }
+                });
+            }, function(error) {
+                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
             });
-        }, function(error) {
-            angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-        });
     }]);
