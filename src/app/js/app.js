@@ -227,12 +227,14 @@ angular.module('generous', ['hljs'])
                     var tmp = document.createElement('div');
                     tmp.innerHTML = scope.view.example.head;
                     for (var n = tmp.children.length; n--;) {
-                        if (tmp.children[n].tagName.toLowerCase() !== 'script') {
+                        if (tmp.children[n].tagName.toLowerCase() !== 'script' || (tmp.children[n].tagName.toLowerCase() === 'script' && !tmp.children[n].src)) {
                             head.appendChild(tmp.children[n]);
                         }
                     }
                     [].forEach.call(tmp.getElementsByTagName('script'), function(script) {
-                        scripts.push(script.src);
+                        if(script.src){
+							scripts.push(script.src);
+						}
                     });
                 }
                 /*
