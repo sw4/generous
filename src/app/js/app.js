@@ -241,12 +241,16 @@ angular.module('generous', ['hljs'])
                         if(n===scripts.length){
                             return;
                         }else if(scripts[n]){
+                            // use a promise structure to ensure any remote content has loaded
                             if(scripts[n].src){ // link
-                                injectJavascript(scripts[n].src);
+                                injectJavascript(scripts[n].src).then(function(){
+                                    iterateScript(n+1);
+                                });
                             }else{ // inlined
-                                injectJavascript(scripts[n].innerHTML, true);
+                                injectJavascript(scripts[n].innerHTML, true).then(function(){
+                                    iterateScript(n+1);
+                                });
                             }
-                            iterateScript(n+1);
                         }
                     }
                     iterateScript();
@@ -264,17 +268,23 @@ angular.module('generous', ['hljs'])
                  * @private true
                  * @description used to create a script tag in the context of the example iFrame (otherwise
                  * included scripts may note resolve correctly) and inject any passed Javascript before adding
-                 * it to the head section of the example iFrame.
+                 * it to the head section of the example iFrame. Returns a promise to make sure content is loaded
                  */
                 function injectJavascript(source, embed) {
+                    var deferred = $q.defer();
                     var script = iframe.contentWindow.document.createElement("script");
                     script.type = "text/javascript";
                     if(embed){
                         script.innerHTML = source;
+                        deferred.resolve(script, source);
                     }else{
                         script.src = source;
+                        angular.element(script).on('load',function(e){
+                            deferred.resolve(script, source);
+                        });
                     }
                     head.appendChild(script);
+                    return deferred.promise;
                 }
                 /*
                  * @generous
@@ -293,8 +303,9 @@ angular.module('generous', ['hljs'])
                             scope.getExampleLoadingMsg.push({
                                 text: 'Loading ' + url
                             });
-                            injectJavascript(response.data, true);
-                            deferred.resolve(response);
+                            injectJavascript(response.data, true).then(function(){
+                                deferred.resolve(response);
+                            });
                         }, function(err) {
                             scope.getExampleLoadingMsg.push({
                                 text: 'Failed to load ' + url,
