@@ -32,6 +32,145 @@ angular.module('generous', ['hljs'])
             "</span>"
         };
     }])
+    .directive('generousExample',['$timeout', '$http', '$q', function($timeout, $http, $q){
+        return {
+            restrict: 'E',
+            replace: true,
+            scope:{
+                source:'='
+            },
+            template: "<section>" +
+                "<p ng-if='source.description'>{{source.description}}<br /><br /></p>" +
+                "<ul class='tabset__tabs list--inline'>" +
+                    "<li ng-repeat='(key,val) in tabs track by $index' ng-click='setTab($index)' ng-class='{\"tab--active\":showTab===$index}'>{{key}}</li>" +
+                "</ul>" +
+                "<iframe id='gen__exampleOutput' ng-show='showTab === 0'></iframe>" +
+                "<div ng-repeat='tab in tabs track by $index' ng-if='showTab === $index && $index > 0' hljs hljs-linums source='tab' class='gen__exampleSnippet'>{{tab}}</div>" +
+            "</section>",
+            link:function(scope, el){
+                scope.tabs={};
+                scope.setTab=function(t){
+                    t=t||0;
+                    scope.showTab=t;
+                };
+                scope.setTab();
+                scope.tabs.output="<iframe id='gen__exampleOutput'></iframe>";
+                for (var key in angular.copy(scope.source)) {
+                    if (scope.source.hasOwnProperty(key) && key !=='description') {
+                        scope.tabs[key]=scope.source[key];
+                    }
+                }
+
+                scope.genExampleLoaded = false;
+                scope.getExampleLoadingMsg = [];
+
+
+                var iframe = el[0].getElementsByTagName('iframe')[0],
+                    head = iframe.contentDocument.head,
+                    body = iframe.contentDocument.body,
+                    scripts = [];
+
+
+                iframe.style.opacity = '0';
+                if (scope.source.head) {
+                    scope.getExampleLoadingMsg.push({
+                        text: 'Loading HEAD content'
+                    });
+                    var tmp = document.createElement('div');
+                    tmp.innerHTML = scope.source.head;
+                    for (var n = 0;n<tmp.children.length; n++) {
+                        if (tmp.children[n].tagName.toLowerCase() !== 'script') {
+                            head.appendChild(tmp.children[n]); //stylesheet or other content
+                        }else{
+                            scripts.push(tmp.children[n]);
+                        }
+                    }
+
+                }
+
+                function iterateScripts(n){
+                    n=n||0;
+                    if(n===scripts.length){
+                        resolveContent(); // all (if any) script content loaded, so load the rest
+                        return;
+                    }else if(scripts[n]){
+                        injectJavascript(scripts[n]).then(function(){ // load in the script, when ready load next
+                            iterateScripts(n+1);
+                        });
+                    }
+                }
+                iterateScripts();
+
+
+                function injectJavascript(source) {
+                    var deferred = $q.defer();
+                    var script = iframe.contentWindow.document.createElement("script");
+                    script.type = "text/javascript";
+                    if(source.hasAttribute('embed') && source.src){ // embedding a remote script
+                        $http.get(source.src).
+                            then(function(response) {
+
+                                scope.getExampleLoadingMsg.push({
+                                    text: 'Loading ' + source.src
+                                });
+                                script.text = response.data;
+                                deferred.resolve(script);
+                            }, function(err) {
+                                scope.getExampleLoadingMsg.push({
+                                    text: 'Failed to load ' + url,
+                                    error: true
+                                });
+                                deferred.reject(err);
+                            })
+
+                    }else if(source.src){ // simply laoding in a script tag
+                        script.src = source.src;
+                        angular.element(script).on('load',function(e){
+                            deferred.resolve(script);
+                        });
+                    }else{ // inline script
+                        script.innerHTML = typeof source === 'string' ? source : source.innerHTML;
+                        deferred.resolve(script);
+                    }
+                    head.appendChild(script);
+                    return deferred.promise;
+                }
+
+
+                function resolveContent() {
+                    angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
+                    if (scope.source.javascript) {
+                        scope.getExampleLoadingMsg.push({
+                            text: 'Javascript loaded'
+                        });
+                        injectJavascript(scope.source.javascript);
+                    }
+
+                    if (scope.source.css) {
+                        scope.getExampleLoadingMsg.push({
+                            text: 'CSS loaded'
+                        });
+                        var styles = document.createElement('style');
+                        styles.innerHTML = scope.source.css;
+                        head.appendChild(styles);
+                    }
+
+                    if (scope.source.html) {
+                        scope.getExampleLoadingMsg.push({
+                            text: 'HTML loaded'
+                        });
+                        body.innerHTML = scope.source.html;
+                    }
+                    scope.genExampleLoaded = true;
+                    iframe.style.height = body.scrollHeight + 25 + 'px';
+                    iframe.style.opacity = '1';
+                }
+
+
+
+            }
+        };
+    }])
     .service('errorSvc', function() {
         return {
             init: function(scope) {
@@ -198,142 +337,6 @@ angular.module('generous', ['hljs'])
 
                     }
                 };
-            }
-        };
-    }])
-    /*
-     * @generous
-     * @name genExample
-     * @type directive
-     * @description directive used to instantiate the example output section, which is an iFrame
-     * loaded with any javascript, html, css and head items specified within the generous `@example`
-     * tag
-     */
-    .directive('genExample', ['$timeout', '$http', '$q', function($timeout, $http, $q) {
-        return {
-            restrict: 'A',
-            link: function(scope, el) {
-                scope.genExampleLoaded = false;
-                scope.getExampleLoadingMsg = [];
-                var iframe = el[0].getElementsByTagName('iframe')[0],
-                    head = iframe.contentDocument.head,
-                    body = iframe.contentDocument.body,
-                    scripts = [];
-                iframe.style.opacity = '0';
-                if (scope.view.example.head) {
-                    scope.getExampleLoadingMsg.push({
-                        text: 'Loading HEAD content'
-                    });
-                    var tmp = document.createElement('div');
-                    tmp.innerHTML = scope.view.example.head;
-                    for (var n = 0;n<tmp.children.length; n++) {
-                        if (tmp.children[n].tagName.toLowerCase() !== 'script') {
-                            head.appendChild(tmp.children[n]); //stylesheet or other content
-                        }else{
-                            scripts.push(tmp.children[n]);
-                        }
-                    }
-
-                }
-
-                function iterateScripts(n){
-                    n=n||0;
-                    if(n===scripts.length){
-                        resolveContent(); // all (if any) script content loaded, so load the rest
-                        return;
-                    }else if(scripts[n]){
-                        injectJavascript(scripts[n]).then(function(){ // load in the script, when ready load next
-                            iterateScripts(n+1);
-                        });
-                    }
-                }
-                iterateScripts();
-
-                /*
-                 * @generous
-                 * @name injectJavascript
-                 * @type function
-                 * @private true
-                 * @description used to create a script tag in the context of the example iFrame (otherwise
-                 * included scripts may note resolve correctly) and inject any passed Javascript before adding
-                 * it to the head section of the example iFrame. Returns a promise to make sure content is loaded
-                 */
-
-
-                function injectJavascript(source) {
-                    var deferred = $q.defer();
-                    var script = iframe.contentWindow.document.createElement("script");
-                    script.type = "text/javascript";
-                    if(source.hasAttribute('embed') && source.src){ // embedding a remote script
-                        $http.get(source.src).
-                            then(function(response) {
-
-                                scope.getExampleLoadingMsg.push({
-                                    text: 'Loading ' + source.src
-                                });
-                                script.text = response.data;
-                                deferred.resolve(script);
-                            }, function(err) {
-                                scope.getExampleLoadingMsg.push({
-                                    text: 'Failed to load ' + url,
-                                    error: true
-                                });
-                                deferred.reject(err);
-                            })
-
-                    }else if(source.src){ // simply laoding in a script tag
-                        script.src = source.src;
-                        angular.element(script).on('load',function(e){
-                            deferred.resolve(script);
-                        });
-                    }else{ // inline script
-                        script.innerHTML = typeof source === 'string' ? source : source.innerHTML;
-                        deferred.resolve(script);
-                    }
-                    head.appendChild(script);
-                    return deferred.promise;
-                }
-
-
-
-                /*
-                 * @generous
-                 * @name resolveContent
-                 * @type function
-                 * @private true
-                 * @description function is used to continue resolving content to load into the example iFrame,
-                 * by injecting any Javascript followed by any html, and finally resizing the iFrame to fit the
-                 * content
-                 */
-                function resolveContent() {
-                    angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-                    if (scope.view.example.javascript) {
-                        scope.getExampleLoadingMsg.push({
-                            text: 'Javascript loaded'
-                        });
-                        injectJavascript(scope.view.example.javascript);
-                    }
-
-                    if (scope.view.example.css) {
-                        scope.getExampleLoadingMsg.push({
-                            text: 'CSS loaded'
-                        });
-                        var styles = document.createElement('style');
-                        styles.innerHTML = scope.view.example.css;
-                        head.appendChild(styles);
-                    }
-
-                    if (scope.view.example.html) {
-                        scope.getExampleLoadingMsg.push({
-                            text: 'HTML loaded'
-                        });
-                        body.innerHTML = scope.view.example.html;
-                    }
-                    scope.genExampleLoaded = true;
-                    iframe.style.height = body.scrollHeight + 25 + 'px';
-                    iframe.style.opacity = '1';
-                }
-
             }
         };
     }])
