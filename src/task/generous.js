@@ -75,8 +75,11 @@ function parseExample(text, opt) {
         }
     }
     var exampleObj={};
-    opt.example.forEach(function(section){
-        exampleObj[section]=splitType(section);
+    opt.example.forEach(function(section) {
+        var isPresent = splitType(section);
+        if (isPresent) {
+            exampleObj[section] = isPresent;
+        }
     });
     if(text.indexOf('<')>0){
         exampleObj.description=trim(text.substr(0,text.indexOf('<')));
