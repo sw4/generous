@@ -218,8 +218,7 @@ angular.module('generous', ['hljs'])
                 var iframe = el[0].getElementsByTagName('iframe')[0],
                     head = iframe.contentDocument.head,
                     body = iframe.contentDocument.body,
-                    scripts = [],
-                    embeds= [];
+                    scripts = [];
                 iframe.style.opacity = '0';
                 if (scope.view.example.head) {
                     scope.getExampleLoadingMsg.push({
@@ -229,38 +228,27 @@ angular.module('generous', ['hljs'])
                     tmp.innerHTML = scope.view.example.head;
                     for (var n = 0;n<tmp.children.length; n++) {
                         if (tmp.children[n].tagName.toLowerCase() !== 'script') {
-                            head.appendChild(tmp.children[n]);
-                        }else if(tmp.children[n].tagName.toLowerCase() === 'script' && !tmp.children[n].hasAttribute('embed')){
-                            // javscript, not being embedded- so include like for like
+                            head.appendChild(tmp.children[n]); //stylesheet or other content
+                        }else{
                             scripts.push(tmp.children[n]);
                         }
                     }
 
-                    function iterateScript(n){
-                        n=n||0;
-                        if(n===scripts.length){
-                            return;
-                        }else if(scripts[n]){
-                            // use a promise structure to ensure any remote content has loaded
-                            if(scripts[n].src){ // link
-                                injectJavascript(scripts[n].src).then(function(){
-                                    iterateScript(n+1);
-                                });
-                            }else{ // inlined
-                                injectJavascript(scripts[n].innerHTML, true).then(function(){
-                                    iterateScript(n+1);
-                                });
-                            }
-                        }
-                    }
-                    iterateScript();
-
-                    [].forEach.call(tmp.getElementsByTagName('script'), function(script) {
-                        if(script.hasAttribute('embed') && script.src){ // embed the source of the external script, dont link
-                            embeds.push(script.src, false);
-                        }
-                    });
                 }
+
+                function iterateScripts(n){
+                    n=n||0;
+                    if(n===scripts.length){
+                        resolveContent(); // all (if any) script content loaded, so load the rest
+                        return;
+                    }else if(scripts[n]){
+                        injectJavascript(scripts[n]).then(function(){ // load in the script, when ready load next
+                            iterateScripts(n+1);
+                        });
+                    }
+                }
+                iterateScripts();
+
                 /*
                  * @generous
                  * @name injectJavascript
@@ -270,60 +258,44 @@ angular.module('generous', ['hljs'])
                  * included scripts may note resolve correctly) and inject any passed Javascript before adding
                  * it to the head section of the example iFrame. Returns a promise to make sure content is loaded
                  */
-                function injectJavascript(source, embed) {
+
+
+                function injectJavascript(source) {
                     var deferred = $q.defer();
                     var script = iframe.contentWindow.document.createElement("script");
                     script.type = "text/javascript";
-                    if(embed){
-                        script.innerHTML = source;
-                        deferred.resolve(script, source);
-                    }else{
-                        script.src = source;
+                    if(source.hasAttribute('embed') && source.src){ // embedding a remote script
+                        $http.get(source.src).
+                            then(function(response) {
+
+                                scope.getExampleLoadingMsg.push({
+                                    text: 'Loading ' + source.src
+                                });
+                                script.text = response.data;
+                                deferred.resolve(script);
+                            }, function(err) {
+                                scope.getExampleLoadingMsg.push({
+                                    text: 'Failed to load ' + url,
+                                    error: true
+                                });
+                                deferred.reject(err);
+                            })
+
+                    }else if(source.src){ // simply laoding in a script tag
+                        script.src = source.src;
                         angular.element(script).on('load',function(e){
-                            deferred.resolve(script, source);
+                            deferred.resolve(script);
                         });
+                    }else{ // inline script
+                        script.innerHTML = typeof source === 'string' ? source : source.innerHTML;
+                        deferred.resolve(script);
                     }
                     head.appendChild(script);
                     return deferred.promise;
                 }
-                /*
-                 * @generous
-                 * @name inlineScripts
-                 * @type function
-                 * @private true
-                 * @description used to return a (series of) promise(s) foreach script tag found in the head
-                 * example section, then inline each in the head element of the example iFrame. The reason for
-                 * doing this is to fetch and ensure all external scripts the example relies upon are available
-                 * before any example Javascript is run, the function is called with a simple `$q.all`
-                 */
-                var inlineScripts = function(url) {
-                    var deferred = $q.defer();
-                    $http.get(url).
-                        then(function(response) {
-                            scope.getExampleLoadingMsg.push({
-                                text: 'Loading ' + url
-                            });
-                            injectJavascript(response.data, true).then(function(){
-                                deferred.resolve(response);
-                            });
-                        }, function(err) {
-                            scope.getExampleLoadingMsg.push({
-                                text: 'Failed to load ' + url,
-                                error: true
-                            });
-                            deferred.reject(err);
-                        });
-                    return deferred.promise;
-                };
 
-                if (embeds.length > 0) {
-                    angular.element(document.getElementById('gen__logo')).addClass('gen__anim_phaseOut gen__anim_loop');
-                    $q.all(embeds.map(inlineScripts)).then(function() {
-                        resolveContent();
-                    });
-                } else {
-                    resolveContent();
-                }
+
+
                 /*
                  * @generous
                  * @name resolveContent
@@ -339,7 +311,7 @@ angular.module('generous', ['hljs'])
                         scope.getExampleLoadingMsg.push({
                             text: 'Javascript loaded'
                         });
-                        injectJavascript(scope.view.example.javascript, true);
+                        injectJavascript(scope.view.example.javascript);
                     }
 
                     if (scope.view.example.css) {
