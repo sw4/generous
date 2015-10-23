@@ -78,6 +78,9 @@ function parseExample(text, opt) {
     opt.example.forEach(function(section){
         exampleObj[section]=splitType(section);
     });
+    if(text.indexOf('<')>0){
+        exampleObj.description=trim(text.substr(0,text.indexOf('<')));
+    }
     return exampleObj;
 }
 
@@ -89,7 +92,10 @@ function constructDocItem(file, text, startingLine, lineNumber, opt){
     var atName,
         atText,
         match,
-        self={};
+        self={
+            examples:[]
+        },
+        examples=[];
 
     text.split(NEW_LINE).forEach(function(line){
         if ((match = line.match(/^\s*@(\w+)(\s+(.*))?/))) {
@@ -104,7 +110,6 @@ function constructDocItem(file, text, startingLine, lineNumber, opt){
             }
         }
     });
-
 
 
     flush();
@@ -184,6 +189,8 @@ function constructDocItem(file, text, startingLine, lineNumber, opt){
                 self.target = match[2];
             } else if(atName == 'constructor') {
                 self.constructor = true;
+            } else if(atName === 'example'){
+                examples.push(text);
             } else {
                 self[atName] = text;
             }
@@ -201,7 +208,9 @@ function constructDocItem(file, text, startingLine, lineNumber, opt){
 
     self.shortName=camelize(self.name);
     self.id=self.id || self.shortName;
-    self.example = parseExample(self.example, opt);
+    examples.forEach(function(example){
+        self.examples.push(parseExample(example, opt));
+    });
     self[opt.denominator]={
         source:path.relative(opt.dest,file),
         line:{
@@ -334,4 +343,3 @@ if(argv.src){
     generous();
 }
 module.exports = generous;
-
