@@ -1,4 +1,3 @@
-// http://jsfiddle.net/ypczkc0d/5/
 angular.module('generous', ['hljs'])
     .run(['$rootScope', '$location', '$anchorScroll', '$timeout', function($rootScope, $location, $anchorScroll, $timeout) {
         // when the page loads scroll to the proper element.
