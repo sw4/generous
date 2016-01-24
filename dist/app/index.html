@@ -5,12 +5,16 @@
     <title>
         {{::model.options.title}}
     </title>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
     <link rel="stylesheet" href="libs/highlight-js.github-styles.min.css">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300italic,300,200,200italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" href="css/generous.app.min.css">
-    <script src="libs/angular.1.4.5.min.js"></script>
+
+    <script src="libs/angular.1.4.7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
     <script src="libs/highlight-js.8.3.min.js"></script>
     <script src="libs/angular-highlight.0.4.3.min.js"></script>
@@ -84,8 +88,6 @@
                 <div ng-repeat="related in view.children track by $index">
                     <h4 ng-if="view.children[$index-1].type !== related.type"><gen-anchor link="'related_'+related.type+'s'">{{related.type}}s</gen-anchor></h4>
                     <a href ng-click="updateView(related.hash)">{{related.name}}</a>
-                    <span gen-markdown="related.description" class="text--small"></span>
-                    <br />
                 </div>
             </section>
             <section ng-if="view.returns">
@@ -144,26 +146,9 @@
                     </tr>
                 </table>
             </section>
-            <section ng-if="view.example" ng-init="genExampleTab = 0">
+            <section ng-if="view.examples">
                 <h2><gen-anchor>Example</gen-anchor></h2>
-                <ul class="tabset__tabs list--inline">
-                    <li ng-click="genExampleTab = 0" ng-class="{'tab--active':genExampleTab===0}">Output</li>
-                    <li ng-click="genExampleTab = 1" ng-show="view.example.head" ng-class="{'tab--active':genExampleTab===1}">HEAD</li>
-                    <li ng-click="genExampleTab = 2" ng-show="view.example.html" ng-class="{'tab--active':genExampleTab===2}">HTML</li>
-                    <li ng-click="genExampleTab = 3" ng-show="view.example.css" ng-class="{'tab--active':genExampleTab===3}">CSS</li>
-                    <li ng-click="genExampleTab = 4" ng-show="view.example.javascript" ng-class="{'tab--active':genExampleTab===4}">Javascript</li>
-                    <li class="push--right" ng-click="sourceEditor($event)">Edit in {{::model.options.sourceEditor}}&nbsp;&nbsp;<i class="glyphicon glyphicon-pencil"></i></li>
-                </ul>
-                <div ng-if="genExampleTab===0" gen-example="view.example">
-                    <div ng-if="!genExampleLoaded" id="gen__exampleLoader">
-                        <div ng-repeat="msg in getExampleLoadingMsg">{{msg.text}}</div>
-                    </div>
-                    <iframe id="gen__exampleOutput"></iframe>
-                </div>
-                <div ng-if="genExampleTab===1" hljs hljs-linums source="view.example.head" language="html" class="gen__exampleSnippet"></div>
-                <div ng-if="genExampleTab===2" hljs hljs-linums source="view.example.html" language="html" class="gen__exampleSnippet"></div>
-                <div ng-if="genExampleTab===3" hljs hljs-linums source="view.example.css" language="css" class="gen__exampleSnippet"></div>
-                <div ng-if="genExampleTab===4" hljs hljs-linums source="view.example.javascript" language="javascript" class="gen__exampleSnippet"></div>
+                <generous-example source="example" ng-repeat="example in view.examples"></generous-example>
             </section>
         </section>
     </main>
