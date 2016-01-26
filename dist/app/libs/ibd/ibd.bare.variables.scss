@@ -1,0 +1,203 @@
+$transparent:           transparent;
+
+$white:                 #ffffff !default;
+$white-pct-90:          #e6e6e6;
+$white-pct-80:          #cccccc;
+$white-pct-70:          #b3b3b3;
+$white-pct-60:          #999999;
+$white-pct-50:          #808080;
+$white-pct-40:          #666666;
+$white-pct-30:          #4d4d4d;
+$white-pct-20:          #333333;
+$white-pct-10:          #1a1a1a;
+
+$black:                 #000000 !default;
+$black-pct-90:          #191919;
+$black-pct-80:          #333333;
+$black-pct-70:          #4c4c4c;
+$black-pct-60:          #666666;
+$black-pct-50:          #7f7f7f;
+$black-pct-40:          #999999;
+$black-pct-30:          #b2b2b2;
+$black-pct-20:          #cccccc;
+$black-pct-10:          #e5e5e5;
+
+//Status brushes
+$olive:                 #3d9970 !default;
+$orange:                #ff851b !default;
+$red:                   #ff4136 !default;
+
+//accents
+$accent-01:       #1167a0;
+$accent-02:       darken($accent-01, 5%);
+$accent-03:       darken($accent-01, 10%);
+$accent-04:       darken($accent-01, 15%);
+$accent-05:       darken($accent-01, 20%);
+//dark
+$dark-01:         #141617;
+$dark-02:         lighten($dark-01, 5%);
+$dark-03:         lighten($dark-01, 10%);
+$dark-04:         lighten($dark-01, 15%);
+$dark-05:         lighten($dark-01, 20%);
+//lite
+$lite-01:        #f8f8f8;
+$lite-02:        darken($lite-01, 5%);
+$lite-03:        darken($lite-01, 10%);
+$lite-04:        darken($lite-01, 15%);
+$lite-05:        darken($lite-01, 20%);
+
+
+$line-height:           1.5 !default;
+
+$font-family:           'OpenSans', Helvetica, sans-serif !default;
+
+$normal-font-weight:    400 !default;
+$semi-bold-font-weight: 600 !default;
+$bold-font-weight:      bold !default;
+
+
+$heading-font-family: $font-family !default;
+$heading-font-weight: $normal-font-weight;
+$heading-line-height: 1.25 !default;
+$heading-margin-top: 1em !default;
+$heading-margin-bottom: .5em !default;
+
+$h1: 2rem !default;
+$h2: 1.5rem !default;
+$h3: 1.25rem !default;
+$h4: 1rem !default;
+$h5: .875rem !default;
+$h6: .75rem !default;
+
+$space-0-5: .5rem !default;
+$space-1: 1rem !default;
+$space-1-3: 1.3rem !default;
+$scape-1-5: 1.5rem !default;
+$space-1-6: 1.6rem !default; 
+$space-2: 2rem !default;
+$space-2-5: 2.5rem !default;
+$space-3: 3rem !default;
+$space-4: 4rem !default;
+$space-5-3: 5.3rem !default;
+
+$paragraph-margin-top: 0 !default;
+$paragraph-margin-bottom: $space-2 !default;
+
+$list-margin-top: 0 !default;
+$list-margin-bottom: $space-2 !default;
+
+$pre-font-size: inherit !default;
+$pre-margin-top: 0 !default;
+$pre-margin-bottom: $space-2 !default;
+
+
+$form-field-font-size: 1rem !default;
+$form-field-height: 2.25rem !default;
+$form-field-padding-y: .5rem !default;
+$form-field-padding-x: .5rem !default;
+
+
+$button-font-size: inherit !default;
+$button-font-weight: normal !default;
+$button-line-height: 1.125rem !default;
+$button-padding-y: .5rem !default;
+$button-padding-x: 1rem !default;
+
+
+$container-width: 64em !default;
+
+
+$darken-1: rgba(0,0,0,.0625) !default;
+$darken-2: rgba(0,0,0,.125) !default;
+$darken-3: rgba(0,0,0,.25) !default;
+$darken-4: rgba(0,0,0,.5) !default;
+
+
+$lighten-1: rgba(255,255,255,.0625) !default;
+$lighten-2: rgba(255,255,255,.125) !default;
+$lighten-3: rgba(255,255,255,.25) !default;
+$lighten-4: rgba(255,255,255,.5) !default;
+
+
+$border-width: 1px !default;
+$border-radius: 0px !default;
+$border-color: $darken-2 !default;
+
+
+$button-font-family: inherit !default;
+$button-font-size: inherit !default;
+$button-font-weight: $bold-font-weight !default;
+$button-line-height: 1.125rem !default;
+$button-padding-y: .5rem !default;
+$button-padding-x: 1rem !default;
+$button-color: $white !default;
+$button-background-color: $accent-01 !default;
+$button-small-padding-y: .25rem !default;
+$button-small-padding-x: .5rem !default;
+$button-big-padding-y: 1rem !default;
+$button-big-padding-x: 1.25rem !default;
+$button-narrow-padding-x: $space-1 !default;
+
+
+$range-thumb-width: $form-field-padding-x !default;
+$range-thumb-height: ( $form-field-height - ($form-field-padding-y * 2) ) !default;
+$range-track-height: ( $form-field-padding-y / 2 ) !default;
+$range-thumb-offset: ( $range-thumb-height / -2 + ($range-track-height / 2) ) !default;
+$range-thumb-pseudo-size: $form-field-height !default;
+
+
+$table-header-font-weight: $normal-font-weight !default;
+$table-cell-padding-x: $space-2 !default;
+$table-cell-padding-y: .25rem !default;
+
+
+$field-focus-color: $accent-01 !default;
+$field-success-color: $olive !default;
+$field-warning-color: $orange !default;
+$field-error-color: $red !default;
+
+
+$form-field-font-family: inherit !default;
+$form-field-font-size: 1rem !default;
+$form-field-height: 2.25rem !default;
+$form-field-padding-y: .5rem !default;
+$form-field-padding-x: .5rem !default;
+
+
+$body-font-size: 100% !default; // Everything here on is rem based to allow for proper scaling //100% !default;
+$body-color: $black !default;
+$body-background-color: $white !default;
+
+
+$link-color: $accent-01 !default;
+$link-text-decoration: none !default;
+$link-hover-text-decoration: underline !default;
+
+
+$pre-background-color: transparent !default;
+$pre-border-radius: $border-radius !default;
+
+
+$rule-border-style: solid !default;
+$rule-border-width: $border-width !default;
+$rule-border-color: $border-color !default;
+
+
+$h00: 4rem !default;
+$h0: 3rem !default;
+$h00-responsive: 8vw !default;
+$h0-responsive: 6vw !default;
+$h1-responsive: 4vw !default;
+$h00-responsive-max: 7.68rem !default;
+$h0-responsive-max: 5.76rem !default;
+$h1-responsive-max: 3.84rem !default;
+
+
+$breakpoint-sm: '(min-width: 40em)' !default;
+$breakpoint-md: '(min-width: 52em)' !default;
+$breakpoint-lg: '(min-width: 64em)' !default;
+$breakpoint-md: '(min-width: 52em)' !default;
+$breakpoint-xl: '(min-width: 96em)' !default;
+
+$transition-duration-default: 150ms;
+$transition-effect-default: ease-in;

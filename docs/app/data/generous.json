@@ -17,6 +17,7 @@
   },
   "data": [
     {
+      "examples": [],
       "generous": {
         "source": "../data/generous.info",
         "line": {
@@ -28,10 +29,10 @@
       "name": "About",
       "description": "Lightweight code comment parsing & API doc generation node module.\n\ngenerous was written to address the perceived restrictive / inaccessible\napproach of other comment parsers, in that you are limited to using\nspecific tags to indicate the relationships and purpose of content.\n\nTypically such parsers therefore impose a structure onto your code which\nmay or may not fit (e.g. the difficulties of using JSDoc to document angular,\nhence ngdocs creation). generous allows you to easily denote relationships\nbetween anything as well as determine your own tags to be parsed. In addition,\nit allows you to use existing comment structures without too much overhead.",
       "shortName": "about",
-      "id": "about",
-      "example": null
+      "id": "about"
     },
     {
+      "examples": [],
       "generous": {
         "source": "../data/generous.info",
         "line": {
@@ -43,9 +44,9 @@
       "name": "Installation & Build",
       "shortName": "installation&Build",
       "id": "installation&Build",
-      "example": null,
       "children": [
         {
+          "examples": [],
           "generous": {
             "source": "../data/install&build.info",
             "line": {
@@ -59,9 +60,9 @@
           "description": "",
           "shortName": "buildOptions",
           "id": "buildOptions",
-          "example": null,
           "children": [
             {
+              "examples": [],
               "generous": {
                 "source": "../data/buildoptions.info",
                 "line": {
@@ -74,10 +75,10 @@
               "parent": "Build Options",
               "description": "A glob of source files to scan. Files can be of ANY type, so long as generous content\nis placed within generous comment blocks",
               "shortName": "src",
-              "id": "src",
-              "example": null
+              "id": "src"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/buildoptions.info",
                 "line": {
@@ -90,10 +91,10 @@
               "parent": "Build Options",
               "description": "String or HTML to appear in the top left of the generous app, defaults to\n'generous'",
               "shortName": "title",
-              "id": "title",
-              "example": null
+              "id": "title"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/buildoptions.info",
                 "line": {
@@ -106,10 +107,10 @@
               "parent": "Build Options",
               "description": "Denominator for comments, defaults to **generous** e.g. *@generous*\nin a source file indicates the comment should be parsed. If you have existing\ncomments targeting other document comment parsers, simply change to the term required,\ne.g. **ngdoc**, **jsdoc**. Note that in the output data json, the denominator tag will\nbe populated with the source file (relative path) being parsed as well as the 'to'\nand 'from' line numbers.",
               "shortName": "denominator",
-              "id": "denominator",
-              "example": null
+              "id": "denominator"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/buildoptions.info",
                 "line": {
@@ -122,10 +123,10 @@
               "parent": "Build Options",
               "description": "String denoting a custom html docs template, see `dist/app/index.html` for example",
               "shortName": "template",
-              "id": "template",
-              "example": null
+              "id": "template"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/buildoptions.info",
                 "line": {
@@ -138,10 +139,10 @@
               "parent": "Build Options",
               "description": "Boolean, defaults to `true` and indicates whether generated content should link back\nto its source file, and whether source browsing should be enabled within generous. This\ncan also be set for each item independently using the `@sourceLink` tag.",
               "shortName": "sourceLink",
-              "id": "sourceLink",
-              "example": null
+              "id": "sourceLink"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/buildoptions.info",
                 "line": {
@@ -154,10 +155,10 @@
               "parent": "Build Options",
               "description": "String denoting the 3rd party code editor to use to allow users to edit code examples,\npossible values include **plunker** (or *plnkr*), **JSFiddle** or **JSBin**. Note that any\nderivation of these with whitespace or capitals can also be used.",
               "shortName": "sourceEditor",
-              "id": "sourceEditor",
-              "example": null
+              "id": "sourceEditor"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/buildoptions.info",
                 "line": {
@@ -170,12 +171,12 @@
               "parent": "Build Options",
               "description": "String denoting the destination folder to save generated generous application",
               "shortName": "dest",
-              "id": "dest",
-              "example": null
+              "id": "dest"
             }
           ]
         },
         {
+          "examples": [],
           "generous": {
             "source": "../data/install&build.info",
             "line": {
@@ -188,10 +189,10 @@
           "parent": "Installation & Build",
           "description": "Install the package directly from NPM\n`npm install generous --save-dev`",
           "shortName": "installation",
-          "id": "installation",
-          "example": null
+          "id": "installation"
         },
         {
+          "examples": [],
           "generous": {
             "source": "../data/install&build.info",
             "line": {
@@ -204,12 +205,12 @@
           "parent": "Installation & Build",
           "description": "### Task Runners\n\n#### Gulp\n\n```javascript\nvar gulp = require('gulp'),\n    generous = require('generous');\ngulp.task('generous', function () {\n    generous(options); // where 'options' denotes required options\n});\n```\n\n#### Grunt\n```javascript\ngrunt.registerTask('generous', 'Grunt task to run generous', function() {\n  var generous = require('generous');\n  generous(options); // where 'options' denotes required options\n});\n```",
           "shortName": "grunt&Gulp",
-          "id": "grunt&Gulp",
-          "example": null
+          "id": "grunt&Gulp"
         }
       ]
     },
     {
+      "examples": [],
       "generous": {
         "source": "../data/generous.info",
         "line": {
@@ -221,9 +222,9 @@
       "name": "Usage",
       "shortName": "usage",
       "id": "usage",
-      "example": null,
       "children": [
         {
+          "examples": [],
           "generous": {
             "source": "../data/usage.info",
             "line": {
@@ -236,10 +237,10 @@
           "parent": "Usage",
           "description": "Out of the box generous supports a number of comment tags it can recognise and parse.",
           "shortName": "introduction",
-          "id": "introduction",
-          "example": null
+          "id": "introduction"
         },
         {
+          "examples": [],
           "generous": {
             "source": "../data/usage.info",
             "line": {
@@ -253,9 +254,9 @@
           "description": "Out of the box generous supports a number of comment tags it can recognise and parse.",
           "shortName": "tags",
           "id": "tags",
-          "example": null,
           "children": [
             {
+              "examples": [],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
@@ -268,10 +269,10 @@
               "parent": "Tags",
               "description": "Indicates the beginning of a generous comment block for parsing\n(can be changed by setting `options.denominator`)",
               "shortName": "@Generous",
-              "id": "@Generous",
-              "example": null
+              "id": "@Generous"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
@@ -284,10 +285,10 @@
               "parent": "Tags",
               "description": "The name of the item being parsed",
               "shortName": "@Name",
-              "id": "@Name",
-              "example": null
+              "id": "@Name"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
@@ -300,10 +301,10 @@
               "parent": "Tags",
               "description": "Denotes the type of content, can be anything. The default template\nclusters items by type when showing children of an item",
               "shortName": "@Type",
-              "id": "@Type",
-              "example": null
+              "id": "@Type"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
@@ -316,10 +317,10 @@
               "parent": "Tags",
               "description": "Indicates this item is the child of another, the generous application\nwill mark hierarchies as necessary, with the main menu showing up to three\nlevels- child items are listed",
               "shortName": "@Parent",
-              "id": "@Parent",
-              "example": null
+              "id": "@Parent"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
@@ -332,10 +333,10 @@
               "parent": "Tags",
               "description": "A description of the item, by default\nit can contain [markdown](http://daringfireball.net/projects/markdown/).",
               "shortName": "@Description",
-              "id": "@Description",
-              "example": null
+              "id": "@Description"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
@@ -348,10 +349,10 @@
               "parent": "Tags",
               "description": "Whether to show the source file and lines of the item, and allow source\nbrowsing. This tag is overridden by the top level `sourceLink` build\noption.",
               "shortName": "@SourceLink",
-              "id": "@SourceLink",
-              "example": null
+              "id": "@SourceLink"
             },
             {
+              "examples": [],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
@@ -387,27 +388,28 @@
                 }
               ],
               "shortName": "@Param",
-              "id": "@Param",
-              "example": null
+              "id": "@Param"
             },
             {
+              "examples": [
+                {
+                  "html": "\n  <generous-logo></generous-logo><span class='gen__span'>generous</span>\n",
+                  "javascript": "\n angular.module('example', [])\n  .directive('generousLogo', function(){\n   return{\n    restrict:'E',\n    template: \"<span class='gen__logo'>\" +\n      \"<span class='gen__logoShardGroup gen__logoShardGroup1'>\" +\n        \"<span class='gen__logoShard gen__logoShard1'></span>\" +\n        \"<span class='gen__logoShard gen__logoShard2'></span>\" +\n        \"<span class='gen__logoShard gen__logoShard3'></span>\" +\n        \"<span class='gen__logoShard gen__logoShard4'></span>\" +\n      \"</span>\" +\n    \"</span>\"\n   };\n  });\n  angular.element(document).ready(function() {\n    angular.bootstrap(document, ['example']);\n  });\n",
+                  "css": "\n body{\n  background:#333;\n  padding:20px;\n  color:#fff;\n  font-size:20px;\n }\n .gen__span{\n  position: relative;\n  display: inline-block;\n  top: -18px;\n  margin-left: 2px;\n  opacity: .8;\n }\n",
+                  "head": "\n <link rel=\"stylesheet\" href=\"css/generous.app.min.css\" />\n <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js'></script>\n"
+                }
+              ],
               "generous": {
                 "source": "../data/tags.info",
                 "line": {
                   "from": 81,
-                  "to": 132
+                  "to": 138
                 }
               },
               "type": "documentation",
               "name": "@example",
               "parent": "Tags",
-              "description": "Generous supports inline, live examples with links to an\neditable JSBin version, please see below for example output,\ninspect the originating source for the syntax used",
-              "example": {
-                "html": "\n  <generous-logo></generous-logo><span class='gen__span'>generous</span>\n",
-                "javascript": "\n angular.module('example', [])\n  .directive('generousLogo', function(){\n   return{\n    restrict:'E',\n    template: \"<span class='gen__logo'>\" +\n      \"<span class='gen__logoShardGroup gen__logoShardGroup1'>\" +\n        \"<span class='gen__logoShard gen__logoShard1'></span>\" +\n        \"<span class='gen__logoShard gen__logoShard2'></span>\" +\n        \"<span class='gen__logoShard gen__logoShard3'></span>\" +\n        \"<span class='gen__logoShard gen__logoShard4'></span>\" +\n      \"</span>\" +\n    \"</span>\"\n   };\n  });\n  angular.element(document).ready(function() {\n    angular.bootstrap(document, ['example']);\n  });\n",
-                "css": "\n body{\n  background:#333;\n  padding:20px;\n  color:#fff;\n  font-size:20px;\n }\n .gen__span{\n  position: relative;\n  display: inline-block;\n  top: -18px;\n  margin-left: 2px;\n  opacity: .8;\n }\n",
-                "head": "\n <link rel=\"stylesheet\" href=\"css/generous.app.min.css\" />\n <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js'></script>\n"
-              },
+              "description": "Generous supports inline, live examples with links to an\neditable JSBin version, please see below for example output,\ninspect the originating source for the syntax used. By default,\nanyd `script` tags in the head section of an example will be\ninlined when viewing the example within the generous application\ncontext (not when using a third party editor). This ensures\nthe application has access to the resource in the right context.\nIf you do not wish external scripts to be fetched and inlined\n(but linked to) add the attribute `embed=\"false\"`.",
               "shortName": "@Example",
               "id": "@Example"
             }
