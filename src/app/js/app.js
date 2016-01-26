@@ -16,47 +16,47 @@ angular.module('generous', ['hljs'])
             restrict: 'E',
             replace: true,
             template: "<span class='gen__logo'>" +
-                "<span class='gen__logoShardGroup gen__logoShardGroup1'>" +
-                "<span class='gen__logoShard gen__logoShard1'></span>" +
-                "<span class='gen__logoShard gen__logoShard2'></span>" +
-                "<span class='gen__logoShard gen__logoShard3'></span>" +
-                "<span class='gen__logoShard gen__logoShard4'></span>" +
-                "</span>" +
-                "<span class='gen__logoShardGroup gen__logoShardGroup2'>" +
-                "<span class='gen__logoShard gen__logoShard1'></span>" +
-                "<span class='gen__logoShard gen__logoShard2'></span>" +
-                "<span class='gen__logoShard gen__logoShard3'></span>" +
-                "<span class='gen__logoShard gen__logoShard4'></span>" +
-                "</span>" +
-                "</span>"
+            "<span class='gen__logoShardGroup gen__logoShardGroup1'>" +
+            "<span class='gen__logoShard gen__logoShard1'></span>" +
+            "<span class='gen__logoShard gen__logoShard2'></span>" +
+            "<span class='gen__logoShard gen__logoShard3'></span>" +
+            "<span class='gen__logoShard gen__logoShard4'></span>" +
+            "</span>" +
+            "<span class='gen__logoShardGroup gen__logoShardGroup2'>" +
+            "<span class='gen__logoShard gen__logoShard1'></span>" +
+            "<span class='gen__logoShard gen__logoShard2'></span>" +
+            "<span class='gen__logoShard gen__logoShard3'></span>" +
+            "<span class='gen__logoShard gen__logoShard4'></span>" +
+            "</span>" +
+            "</span>"
         };
     }])
-    .directive('generousExample', ['$timeout', '$http', '$q', function($timeout, $http, $q) {
+    .directive('generousExample',['$timeout', '$http', '$q', function($timeout, $http, $q){
         return {
             restrict: 'E',
             replace: true,
-            scope: {
-                source: '='
+            scope:{
+                source:'='
             },
             template: "<section>" +
                 "<p ng-if='source.description'>{{source.description}}<br /><br /></p>" +
                 "<ul class='tabset__tabs list--inline'>" +
-                "<li ng-repeat='(key,val) in tabs track by $index' ng-click='setTab($index)' ng-class='{\"tab--active\":showTab===$index}'>{{key}}</li>" +
+                    "<li ng-repeat='(key,val) in tabs track by $index' ng-click='setTab($index)' ng-class='{\"tab--active\":showTab===$index}'>{{key}}</li>" +
                 "</ul>" +
                 "<iframe id='gen__exampleOutput' ng-show='showTab === 0'></iframe>" +
                 "<div ng-repeat='tab in tabs track by $index' ng-if='showTab === $index && $index > 0' hljs hljs-linums source='tab' class='gen__exampleSnippet'>{{tab}}</div>" +
-                "</section>",
-            link: function(scope, el) {
-                scope.tabs = {};
-                scope.setTab = function(t) {
-                    t = t || 0;
-                    scope.showTab = t;
+            "</section>",
+            link:function(scope, el){
+                scope.tabs={};
+                scope.setTab=function(t){
+                    t=t||0;
+                    scope.showTab=t;
                 };
                 scope.setTab();
-                scope.tabs.output = "<iframe id='gen__exampleOutput'></iframe>";
+                scope.tabs.output="<iframe id='gen__exampleOutput'></iframe>";
                 for (var key in angular.copy(scope.source)) {
-                    if (scope.source.hasOwnProperty(key) && key !== 'description') {
-                        scope.tabs[key] = scope.source[key];
+                    if (scope.source.hasOwnProperty(key) && key !=='description') {
+                        scope.tabs[key]=scope.source[key];
                     }
                 }
 
@@ -77,24 +77,24 @@ angular.module('generous', ['hljs'])
                     });
                     var tmp = document.createElement('div');
                     tmp.innerHTML = scope.source.head;
-                    for (var n = 0; n < tmp.children.length; n++) {
+                    for (var n = 0;n<tmp.children.length; n++) {
                         if (tmp.children[n].tagName.toLowerCase() !== 'script') {
                             head.appendChild(tmp.children[n]); //stylesheet or other content
-                        } else {
+                        }else{
                             scripts.push(tmp.children[n]);
                         }
                     }
 
                 }
 
-                function iterateScripts(n) {
-                    n = n || 0;
-                    if (n === scripts.length) {
+                function iterateScripts(n){
+                    n=n||0;
+                    if(n===scripts.length){
                         resolveContent(); // all (if any) script content loaded, so load the rest
                         return;
-                    } else if (scripts[n]) {
-                        injectJavascript(scripts[n]).then(function() { // load in the script, when ready load next
-                            iterateScripts(n + 1);
+                    }else if(scripts[n]){
+                        injectJavascript(scripts[n]).then(function(){ // load in the script, when ready load next
+                            iterateScripts(n+1);
                         });
                     }
                 }
@@ -105,29 +105,29 @@ angular.module('generous', ['hljs'])
                     var deferred = $q.defer();
                     var script = iframe.contentWindow.document.createElement("script");
                     script.type = "text/javascript";
-                    if (source.hasAttribute('embed') && source.src) { // embedding a remote script
+                    if(source.hasAttribute('embed') && source.src){ // embedding a remote script
                         $http.get(source.src).
-                        then(function(response) {
+                            then(function(response) {
 
-                            scope.getExampleLoadingMsg.push({
-                                text: 'Loading ' + source.src
-                            });
-                            script.text = response.data;
-                            deferred.resolve(script);
-                        }, function(err) {
-                            scope.getExampleLoadingMsg.push({
-                                text: 'Failed to load ' + url,
-                                error: true
-                            });
-                            deferred.reject(err);
-                        })
+                                scope.getExampleLoadingMsg.push({
+                                    text: 'Loading ' + source.src
+                                });
+                                script.text = response.data;
+                                deferred.resolve(script);
+                            }, function(err) {
+                                scope.getExampleLoadingMsg.push({
+                                    text: 'Failed to load ' + url,
+                                    error: true
+                                });
+                                deferred.reject(err);
+                            })
 
-                    } else if (source.src) { // simply laoding in a script tag
+                    }else if(source.src){ // simply laoding in a script tag
                         script.src = source.src;
-                        angular.element(script).on('load', function(e) {
+                        angular.element(script).on('load',function(e){
                             deferred.resolve(script);
                         });
-                    } else { // inline script
+                    }else{ // inline script
                         script.innerHTML = typeof source === 'string' ? source : source.innerHTML;
                         deferred.resolve(script);
                     }
@@ -430,20 +430,20 @@ angular.module('generous', ['hljs'])
                 exampleCode.css = $scope.view.example.css;
             }
             exampleCode.html = '<!doctype html>\n' +
-                '<html>\n' +
-                '  <head>\n';
+            '<html>\n' +
+            '  <head>\n';
             if ($scope.view.example.head) {
                 exampleCode.html += $scope.view.example.head + '\n';
             }
             exampleCode.html += '  </head>\n' +
-                '  <body>\n\n';
+            '  <body>\n\n';
 
             if ($scope.view.example.html) {
                 exampleCode.html += $scope.view.example.html;
             }
 
             exampleCode.html += '  </body>\n' +
-                '</html>\n';
+            '</html>\n';
 
             var svc = $scope.model.options.sourceEditor.toLowerCase().replace(/\s/g, ""),
                 svcLink;
@@ -499,19 +499,19 @@ angular.module('generous', ['hljs'])
             }
             angular.element(document.getElementById('gen__logo')).addClass('gen__anim_phaseOut gen__anim_loop');
             $http.get(src).
-            then(function(response) {
-                //   $timeout(function(){
-                $scope.genSourceCode = response.data;
-                $scope.genViewSource = src;
-                $timeout(function() {
-                    sourceView();
+                then(function(response) {
+                    //   $timeout(function(){
+                    $scope.genSourceCode = response.data;
+                    $scope.genViewSource = src;
+                    $timeout(function() {
+                        sourceView();
+                    });
+                    angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
+                }, function(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
                 });
-                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-            }, function(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-            });
         };
         $scope.updateView = function(item) {
             if (typeof item === 'string') {
@@ -565,18 +565,18 @@ angular.module('generous', ['hljs'])
         errorSvc.init($scope);
         angular.element(document.getElementById('gen__logo')).addClass('gen__anim_phaseOut gen__anim_loop');
         $http.get('data/generous.json').
-        then(function(response) {
-            angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-            $scope.model = response.data;
-            hashMap($scope.model.data);
-            $scope.updateView($location.path() || $scope.model.data[0].hash);
-            $scope.$on('$locationChangeStart', function(event, next, current) {
-                // if the page has loaded with a route- now the hash lookup is available, load the correct item
-                if ($location.path()) {
-                    $scope.updateView($location.path());
-                }
+            then(function(response) {
+                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
+                $scope.model = response.data;
+                hashMap($scope.model.data);
+                $scope.updateView($location.path() || $scope.model.data[0].hash);
+                $scope.$on('$locationChangeStart', function(event, next, current) {
+                    // if the page has loaded with a route- now the hash lookup is available, load the correct item
+                    if ($location.path()) {
+                        $scope.updateView($location.path());
+                    }
+                });
+            }, function(error) {
+                angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
             });
-        }, function(error) {
-            angular.element(document.getElementById('gen__logo')).removeClass('gen__anim_phaseOut gen__anim_loop');
-        });
     }]);
