@@ -1,4 +1,4 @@
-angular.module('generous', ['hljs'])
+angular.module('generous', ['hljs', 'ibd'])
     .run(['$rootScope', '$location', '$anchorScroll', '$timeout', function($rootScope, $location, $anchorScroll, $timeout) {
         // when the page loads scroll to the proper element.
         $timeout(function() {
@@ -120,7 +120,7 @@ angular.module('generous', ['hljs'])
                                 error: true
                             });
                             deferred.reject(err);
-                        })
+                        });
 
                     } else if (source.src) { // simply laoding in a script tag
                         script.src = source.src;

@@ -21,21 +21,6 @@
       "generous": {
         "source": "../data/generous.info",
         "line": {
-          "from": 1,
-          "to": 17
-        }
-      },
-      "type": "documentation",
-      "name": "About",
-      "description": "Lightweight code comment parsing & API doc generation node module.\n\ngenerous was written to address the perceived restrictive / inaccessible\napproach of other comment parsers, in that you are limited to using\nspecific tags to indicate the relationships and purpose of content.\n\nTypically such parsers therefore impose a structure onto your code which\nmay or may not fit (e.g. the difficulties of using JSDoc to document angular,\nhence ngdocs creation). generous allows you to easily denote relationships\nbetween anything as well as determine your own tags to be parsed. In addition,\nit allows you to use existing comment structures without too much overhead.",
-      "shortName": "about",
-      "id": "about"
-    },
-    {
-      "examples": [],
-      "generous": {
-        "source": "../data/generous.info",
-        "line": {
           "from": 19,
           "to": 23
         }
@@ -45,6 +30,22 @@
       "shortName": "installation&Build",
       "id": "installation&Build",
       "children": [
+        {
+          "examples": [],
+          "generous": {
+            "source": "../data/install&build.info",
+            "line": {
+              "from": 3,
+              "to": 11
+            }
+          },
+          "type": "documentation",
+          "name": "Installation",
+          "parent": "Installation & Build",
+          "description": "Install the package directly from NPM\n`npm install generous --save-dev`",
+          "shortName": "installation",
+          "id": "installation"
+        },
         {
           "examples": [],
           "generous": {
@@ -180,22 +181,6 @@
           "generous": {
             "source": "../data/install&build.info",
             "line": {
-              "from": 3,
-              "to": 11
-            }
-          },
-          "type": "documentation",
-          "name": "Installation",
-          "parent": "Installation & Build",
-          "description": "Install the package directly from NPM\n`npm install generous --save-dev`",
-          "shortName": "installation",
-          "id": "installation"
-        },
-        {
-          "examples": [],
-          "generous": {
-            "source": "../data/install&build.info",
-            "line": {
               "from": 23,
               "to": 48
             }
@@ -208,6 +193,21 @@
           "id": "grunt&Gulp"
         }
       ]
+    },
+    {
+      "examples": [],
+      "generous": {
+        "source": "../data/generous.info",
+        "line": {
+          "from": 1,
+          "to": 17
+        }
+      },
+      "type": "documentation",
+      "name": "About",
+      "description": "Lightweight code comment parsing & API doc generation node module.\n\ngenerous was written to address the perceived restrictive / inaccessible\napproach of other comment parsers, in that you are limited to using\nspecific tags to indicate the relationships and purpose of content.\n\nTypically such parsers therefore impose a structure onto your code which\nmay or may not fit (e.g. the difficulties of using JSDoc to document angular,\nhence ngdocs creation). generous allows you to easily denote relationships\nbetween anything as well as determine your own tags to be parsed. In addition,\nit allows you to use existing comment structures without too much overhead.",
+      "shortName": "about",
+      "id": "about"
     },
     {
       "examples": [],

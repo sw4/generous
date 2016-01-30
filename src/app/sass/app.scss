@@ -444,26 +444,6 @@ pre{
     width:50%;
     margin-right:20px;
 }
-#genSearchInput{
-    border: none;
-    background-color: rgba(255,255,255,.05);
-    font-size: 1.2em;
-    font-weight: 400;
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial;
-    color: rgb(255, 255, 255);
-    transition:all 200ms;
-    width:50%;
-    line-height:50px;
-    height:50px;
-    padding: 0 15px;
-    border-radius: 1px;
-    &:active,
-    &:focus{
-        outline:none;
-        background-color:rgba(255,255,255,.2);
-        width:100%;
-    }
-}
 .gen__icon{
     display:inline-block;
     position: relative;
