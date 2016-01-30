@@ -16,7 +16,7 @@ module.exports = function (gulp, plugins) {
             .pipe(plugins.jshint({ 'multistr': true }))
             .pipe(plugins.jshint.reporter('jshint-stylish'))
             .pipe(plugins.concat('generous.app.min.js'))
-            .pipe(plugins.uglify())
+            //.pipe(plugins.uglify())
             .pipe(gulp.dest('dist/app/js'));
 
     });

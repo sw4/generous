@@ -38,49 +38,50 @@
         </button>-->
 
         <!--Side Panel Contents-->
-        <section class="sm-col sm-col-12 md-col-3 lg-col-3 fixed top-0 bottom-0 left-0 bg-white-90 p2">
-            <div class='py2'>
+        <section class="sm-col sm-col-12 md-col-3 lg-col-3 fixed top-0 bottom-0 left-0 bg-white-90">
+            <div class='py2 mb2 mt2'>
                 <!--App Title-->
                 <div ng-bind-html="::model.options.title | trusted" class='center h2 bold block caps mb1'>
                 </div>
                 <!--Powered by Generous-->
                 <!--TODO-->
             </div>
-            <div>
-                <!--Contents-->
-                <div ng-repeat="parent in model.data">
-                    <a href class="h5 caps py1 block bold" ng-click="updateView(parent.hash)">
-                        {{parent.name}}
-                    </a>
-                    <div class="p1" ng-if='parent.children.length'>
-                        <div ng-repeat="child in parent.children track by $index">
-                            <h4 ng-if="parent.children[$index-1].gendocs !== child.gendocs">
-                            {{child.gendocs}}s
-                        </h4>
-                            <a href class='h5 caps pt1 block' ng-click="updateView(child.hash)">
-                            {{child.name}}
+            <div style='height: calc(100% - 147px);' ibd-scroll='y' ibd-live>
+                <div class='px2'>
+                    <!--Contents-->
+                    <div ng-repeat="parent in model.data">
+                        <a href class="h5 caps py1 block bold" ng-click="updateView(parent.hash)">
+                            {{parent.name}}
                         </a>
-                            <div class="p1" ng-if='child.children.length'>
-                                <div ng-repeat="grandchild in child.children">
-                                    <h4 ng-if="child.children[$index-1].gendocs !== grandchild.gendocs">
-                                    {{grandchild.gendocs}}s
+                        <div class="p1" ng-if='parent.children.length'>
+                            <div ng-repeat="child in parent.children track by $index">
+                                <h4 ng-if="parent.children[$index-1].gendocs !== child.gendocs">
+                                {{child.gendocs}}s
                             </h4>
-                                    <a href class='h6 caps block' ng-click="updateView(grandchild.hash)">
-                                    {{grandchild.name}}
+                                <a href class='h5 caps pt1 block' ng-click="updateView(child.hash)">
+                                {{child.name}}
                             </a>
+                                <div class="p1" ng-if='child.children.length'>
+                                    <div ng-repeat="grandchild in child.children">
+                                        <h4 ng-if="child.children[$index-1].gendocs !== grandchild.gendocs">
+                                        {{grandchild.gendocs}}s
+                                </h4>
+                                        <a href class='h6 caps block' ng-click="updateView(grandchild.hash)">
+                                        {{grandchild.name}}
+                                </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
 
-        <section class="sm-col sm-col-12 md-col-9 lg-col-9 fixed top-0 bottom-0 right-0 bg-white p2">
+        <section class="sm-col sm-col-12 md-col-9 lg-col-9 fixed top-0 bottom-0 right-0 bg-white">
             <!--Search-->
-            <div class='py2 clearfix'>
+            <div class='p2 mt2 mb2 clearfix'>
                 <div class='right'>
                     <div data-el='dropdown'>
                         <label for="dropdown-search" data-el='dropdown-trigger' class='btn border-none'>
@@ -94,16 +95,16 @@
                         </label>
                         <div data-el='dropdown-content'>
                             <div class='sm-col sm-col-12 md-col-9 lg-col-9 fixed top-0 bottom-0 right-0'>
-
                                 <!--Mask-->
-                                <div class='absolute top-0 right-0 bottom-0 left-0 bg-white opacity-80 z1'>
+                                <div class='absolute top-0 right-0 bottom-0 left-0 bg-white opacity-70'>
                                 </div>
 
-                                <div class="p2 block relative z4 border-bottom" ng-class="{'filter--active':genSearchActive}">
-                                    <div class='py2 clearfix'>
-                                        <input id="genSearchInput" type="text" class="left field border-none color-block h5" style='width: 70%' placeholder="Search..." ng-model="genSearchTerm" />
+                                <!--Search Input-->
+                                <div class="p2 block relative z4" ng-class="{'filter--active':genSearchActive}">
+                                    <div class='py2 clearfix bg-white-90'>
+                                        <input id="genSearchInput" type="text" class="left field border-none color-block h5 bg-white-90" style='width: 70%' placeholder="Search..." ng-model="genSearchTerm" />
                                         <label for="dropdown-search" data-el='dropdown-overlay' ng-click="genSearchTerm=null;genSearchActive=false;" class='right btn border-none'>
-                                            <svg width='20' height='20' class='align-middle'>
+                                            <svg width='12' height='12' class='align-middle'>
                                                 <use xlink:href="libs/ibd/assets/icons/svgs.svg#close">
                                                 </use>
                                             </svg>
@@ -111,141 +112,154 @@
                                     </div>
                                 </div>
 
+
                                 <!--Search Results-->
-                                <section ng-show="genSearchActive" class='p2 block relative z4' style='height: calc(100% - 147px);' ibd-scroll='y' ibd-live>
-                                    <div class='h5 caps py1 block bold'>
-                                        Search Results for '{{genSearchTerm}}'
-                                    </div>
-                                    <!--<ul id="gen__breadcrumb" class="list--inline">
+                                <div style='height: calc(100% - 147px);' ibd-scroll='y' ibd-live>
+                                    <section class='p2 block relative z4'>
+                                        <div class='h5 caps py1 block bold'>
+                                            Search Results for '{{genSearchTerm}}'
+                                        </div>
+                                        <!--<ul id="gen__breadcrumb" class="list--inline">
                                         <li>
                                             <a href ng-click="genSearchActive=null">Cancel search</a>
                                         </li>
                                     </ul>-->
-                                    <div ng-repeat="result in genSearch track by $index" class='mt3'>
-                                        <a href class='h5 caps py1 block' ng-click="updateView(result.hash)">{{result.name}}
-                                        </a>
-                                        <code class='h6'>{{result.type}}</code>
-                                        <p gen-markdown="result.description"></p>
-                                    </div>
-                                </section>
+                                        <div ng-repeat="result in genSearch track by $index" class='mt3'>
+                                            <label for="dropdown-search" data-el='dropdown-overlay' ng-click="updateView(result.hash); genSearchActive=null;">
+                                                <p class='h5 caps py1 block cursor-hand bold'>{{result.name}}
+                                                </p>
+                                            </label>
+                                            <code class='h6'>{{result.type}}</code>
+                                            <p gen-markdown="result.description"></p>
+                                        </div>
+                                    </section>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <main ng-class="{'view--full':!genViewSource, 'view--split':genViewSource && !genSearchActive}">
-                <section ng-show="!genSearchActive" class='py1'>
-                    <!--Page title-->
-                    <div class='h5 caps py1 block bold'>{{view.name}}</div>
-                    <!--Breadcrumb-->
-                    <ul class="bg-white-90 p1 list-reset block mb0">
-                        <li ng-repeat="crumb in breadcrumb" class='inline'>
-                            <a href class='h6' ng-click="updateView(crumb.hash)">{{crumb.name}} > </a>
-                        </li>
-                    </ul>
-                    <!--Extra Info-->
-                    <section class='clearfix'>
-                        <div class='left'>
-                            <code class="api__type h6">
+
+
+
+            <main ng-class="{'view--full':!genViewSource, 'view--split':genViewSource && !genSearchActive}" style='height: calc(100% - 147px);' ibd-scroll='y' ibd-live>
+                <div class="px2">
+
+                    <section ng-show="!genSearchActive" class='py1'>
+                        <!--Page title-->
+                        <div class='h5 caps py1 block bold'>{{view.name}}</div>
+                        <!--Breadcrumb-->
+                        <ul class="bg-white-90 p1 list-reset block mb0">
+                            <li ng-repeat="crumb in breadcrumb" class='inline'>
+                                <a href class='h6' ng-click="updateView(crumb.hash)">{{crumb.name}} > </a>
+                            </li>
+                        </ul>
+                        <!--Extra Info-->
+                        <section class='clearfix'>
+                            <div class='left'>
+                                <code class="api__type h6">
                                 {{view.type}}
                             </code>
-                            <span ng-if="view.parent" class='h6'> of <strong>{{view.parent}}</strong></span>
-                        </div>
-                        <div ng-if="::model.options.sourceLink && view.sourceLink!==false" class="right h6">
-                            <a href ng-click="sourceLink(view[model.options.denominator].source)">{{view[model.options.denominator].source}}: {{view[model.options.denominator].line.from}}-{{view[model.options.denominator].line.to}}</a>
-                        </div>
-                    </section>
-                    <!--Description-->
-                    <section ng-if="view.description" class='mt3'>
-                        <div class='h5 caps py1 block'>
-                            <!--TODO: Investigate-->
-                            <gen-anchor>Description</gen-anchor>
-                        </div>
-                        <p gen-markdown="view.description"></p>
+                                <span ng-if="view.parent" class='h6'> of <strong>{{view.parent}}</strong></span>
+                            </div>
+                            <div ng-if="::model.options.sourceLink && view.sourceLink!==false" class="right h6">
+                                <a href ng-click="sourceLink(view[model.options.denominator].source)">{{view[model.options.denominator].source}}: {{view[model.options.denominator].line.from}}-{{view[model.options.denominator].line.to}}</a>
+                            </div>
+                        </section>
+                        <!--Description-->
+                        <section ng-if="view.description" class='mt3'>
+                            <div class='h5 caps py1 block'>
+                                <!--TODO: Investigate-->
+                                <gen-anchor>Description</gen-anchor>
+                            </div>
+                            <p gen-markdown="view.description"></p>
+                        </section>
+
+                        <!--TODO-->
+                        <section ng-if="view.children">
+                            <div class='h5 caps py1 block'>
+                                <gen-anchor>Related</gen-anchor>
+                            </div>
+                            <div ng-repeat="related in view.children track by $index">
+                                <h4 ng-if="view.children[$index-1].type !== related.type"><gen-anchor link="'related_'+related.type+'s'">{{related.type}}s</gen-anchor></h4>
+                                <a href ng-click="updateView(related.hash)">{{related.name}}</a>
+                            </div>
+                        </section>
+
+                        <!--TODO-->
+                        <section ng-if="view.returns">
+                            {{view.returns}}
+                        </section>
+
+                        <!--TODO-->
+                        <section ng-if="view.parameters">
+                            <div class='h5 caps py1 block'>
+                                <gen-anchor>Parameters</gen-anchor>
+                            </div>
+                            <table class="genParameters__table">
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Type
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                </tr>
+                                <tr ng-repeat="param in view.parameters">
+                                    <td>
+                                        {{param.name}}
+                                        <span ng-if="param.optional" class="param--optional">(optional)</span>
+                                    </td>
+                                    <td>
+                                        <span class="native-type native-type-{{param.type}}">{{param.type}}</span>
+                                    </td>
+                                    <td>
+                                        <span gen-markdown="param.description"></span>
+                                        <table ng-if="param.properties">
+                                            <tr>
+                                                <th>
+                                                    Name
+                                                </th>
+                                                <th>
+                                                    Type
+                                                </th>
+                                                <th>
+                                                    Description
+                                                </th>
+                                            </tr>
+                                            <tr ng-repeat="prop in param.properties">
+                                                <td>
+                                                    {{prop.name}}
+                                                    <span ng-if="prop.optional" class="param--optional">(optional)</span>
+                                                </td>
+                                                <td>
+                                                    <span class="native-type native-type-{{prop.type}}">{{prop.type}}</span>
+                                                </td>
+                                                <td>
+                                                    <span gen-markdown="prop.description"></span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+
+                        <!--TODO-->
+                        <section ng-if="view.examples">
+                            <div class='h5 caps py1 block'>
+                                <gen-anchor>Example</gen-anchor>
+                            </div>
+                            <generous-example source="example" ng-repeat="example in view.examples"></generous-example>
+                        </section>
                     </section>
 
-                    <!--TODO-->
-                    <section ng-if="view.children">
-                        <div class='h5 caps py1 block'>
-                            <gen-anchor>Related</gen-anchor>
-                        </div>
-                        <div ng-repeat="related in view.children track by $index">
-                            <h4 ng-if="view.children[$index-1].type !== related.type"><gen-anchor link="'related_'+related.type+'s'">{{related.type}}s</gen-anchor></h4>
-                            <a href ng-click="updateView(related.hash)">{{related.name}}</a>
-                        </div>
-                    </section>
-
-                    <!--TODO-->
-                    <section ng-if="view.returns">
-                        {{view.returns}}
-                    </section>
-
-                    <!--TODO-->
-                    <section ng-if="view.parameters">
-                        <div class='h5 caps py1 block'>
-                            <gen-anchor>Parameters</gen-anchor>
-                        </div>
-                        <table class="genParameters__table">
-                            <tr>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Type
-                                </th>
-                                <th>
-                                    Description
-                                </th>
-                            </tr>
-                            <tr ng-repeat="param in view.parameters">
-                                <td>
-                                    {{param.name}}
-                                    <span ng-if="param.optional" class="param--optional">(optional)</span>
-                                </td>
-                                <td>
-                                    <span class="native-type native-type-{{param.type}}">{{param.type}}</span>
-                                </td>
-                                <td>
-                                    <span gen-markdown="param.description"></span>
-                                    <table ng-if="param.properties">
-                                        <tr>
-                                            <th>
-                                                Name
-                                            </th>
-                                            <th>
-                                                Type
-                                            </th>
-                                            <th>
-                                                Description
-                                            </th>
-                                        </tr>
-                                        <tr ng-repeat="prop in param.properties">
-                                            <td>
-                                                {{prop.name}}
-                                                <span ng-if="prop.optional" class="param--optional">(optional)</span>
-                                            </td>
-                                            <td>
-                                                <span class="native-type native-type-{{prop.type}}">{{prop.type}}</span>
-                                            </td>
-                                            <td>
-                                                <span gen-markdown="prop.description"></span>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </section>
-
-                    <!--TODO-->
-                    <section ng-if="view.examples">
-                        <div class='h5 caps py1 block'>
-                            <gen-anchor>Example</gen-anchor>
-                        </div>
-                        <generous-example source="example" ng-repeat="example in view.examples"></generous-example>
-                    </section>
-                </section>
+                </div>
             </main>
 
             <aside id="gen__source" ng-if="genViewSource && !genSearchActive" class="view--split">
