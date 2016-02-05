@@ -9,142 +9,140 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 
-    <link href="libs/ibd/ibd.bare.css" rel="stylesheet" />
-    <link href="libs/ibd/ibd.wrap.ng.css" rel="stylesheet" />
+    <link href="libs/el/dist/el-base-blue.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="libs/highlight-js.github-styles.min.css">
-    <!--<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300italic,300,200,200italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>-->
-
-    <link rel="stylesheet" href="css/generous.app.min.css">
 
     <script src="libs/angular.1.4.7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-    <script src="libs/ibd/ibd.wrap.ng.js"></script>
     <script src="libs/highlight-js.8.3.min.js"></script>
     <script src="libs/angular-highlight.0.4.3.min.js"></script>
     <script src="libs/marked.0.3.5.min.js"></script>
     <script src="js/generous.app.min.js"></script>
+    <script type='text/javascript'>
+    </script>
 </head>
 
-<body>
-    <section class="clearfix fixed top-0 left-0 right-0 bottom-0">
+<body class='relative'>
 
-        <!--Side Panel-->
-        <!--Side Panel tigger button - for sm-->
-        <!--<button class='btn btn-primary md-hide lg-hide absolute left-0 top-0 mt4 ml4 z4'>
-            <svg class="icon" width='30' height='30'>
-                <use xlink:href="libs/ibd/assets/icons/svgs.svg#arrow-down"></use>
-            </svg>
-        </button>-->
+    <!--Navigation Trigger-->
+    <button class="btn border-none md-hide lg-hide absolute">
+        <svg width='22' height='22' class='icon-color-current'>
+            <use xlink:href="dist/assets/svgs/el-icons.svg#icon-1181"></use>
+        </svg>
+    </button>
 
-        <!--Side Panel Contents-->
-        <section class="sm-col sm-col-12 md-col-3 lg-col-3 fixed top-0 bottom-0 left-0 bg-white-90">
-            <div class='py2 mb2 mt2'>
-                <!--App Title-->
-                <div ng-bind-html="::model.options.title | trusted" class='center h2 bold block caps mb1'>
-                </div>
-                <!--Powered by Generous-->
-                <!--TODO-->
-            </div>
-            <div style='height: calc(100% - 147px);' ibd-scroll='y' ibd-live>
-                <div class='px2'>
-                    <!--Contents-->
-                    <div ng-repeat="parent in model.data">
-                        <a href class="h5 caps py1 block bold" ng-click="updateView(parent.hash)">
+    <!--Left side Navigation-->
+    <nav class='fixed top-0 bottom-0 left-0 p2 dw-px-100 border-right'>
+
+        <!--Menu-->
+        <div data-el='dropdown' class='mt2'>
+            <input type="checkbox" id="dropdown-items" />
+            <label data-el='trigger' for="dropdown-items" class="btn p05">
+                <label data-el='mask' for="dropdown-items" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90'>
+                </label>
+            <svg width='22' height='22'>
+                    <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-1181"></use>
+                </svg>
+            </label>
+            <label data-el='mask' for="dropdown-items"></label>
+            <div data-el='content' class='p1 dw-px-300 bg-white-90 border border-black'>
+                <div ng-repeat="parent in model.data" class='py1'>
+                    <a href class="h6 caps block bold" ng-click="updateView(parent.hash)">
                             {{parent.name}}
                         </a>
-                        <div class="p1" ng-if='parent.children.length'>
-                            <div ng-repeat="child in parent.children track by $index">
-                                <h4 ng-if="parent.children[$index-1].gendocs !== child.gendocs">
+                    <div ng-if='parent.children.length'>
+                        <div ng-repeat="child in parent.children track by $index" class="pt05 pl1">
+                            <h4 ng-if="parent.children[$index-1].gendocs !== child.gendocs">
                                 {{child.gendocs}}s
                             </h4>
-                                <a href class='h5 caps pt1 block' ng-click="updateView(child.hash)">
+                            <a href class='h5 caps block' ng-click="updateView(child.hash)">
                                 {{child.name}}
                             </a>
-                                <div class="p1" ng-if='child.children.length'>
-                                    <div ng-repeat="grandchild in child.children">
-                                        <h4 ng-if="child.children[$index-1].gendocs !== grandchild.gendocs">
+                            <div ng-if='child.children.length'>
+                                <div ng-repeat="grandchild in child.children" class="pt05 pl1">
+                                    <h4 ng-if="child.children[$index-1].gendocs !== grandchild.gendocs">
                                         {{grandchild.gendocs}}s
                                 </h4>
-                                        <a href class='h6 caps block' ng-click="updateView(grandchild.hash)">
+                                    <a href class='h6 caps block' ng-click="updateView(grandchild.hash)">
                                         {{grandchild.name}}
                                 </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
+        <!--Search-->
+        <div data-el='dropdown' class='mt2'>
+            <input type="checkbox" id="dropdown-search" />
+            <label data-el='trigger' for="dropdown-search" class="btn p05">
+                <label data-el='mask' for="dropdown-search" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90'>
+                </label>
+            <svg width='22' height='22'>
+                    <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-464"></use>
+                </svg>
+            </label>
+            <label data-el='mask' for="dropdown-search"></label>
+            <div data-el='content' class='p1 dw-px-400 bg-white-90 border border-black'>
+                <!--Search Input-->
+                <div class='clearfix bg-white' ng-class="{'filter--active':genSearchActive}">
+                    <input id="genSearchInput" type="text" class="left field border-none color-block h5" style='width: 70%' placeholder="Search..." ng-model="genSearchTerm" />
+                    <label for="dropdown-search" data-el='mask' ng-click="genSearchTerm=null;genSearchActive=false;" class='right btn border-none'>
+                        <svg width='15' height='15'>
+                            <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-883"></use>
+                        </svg>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-        <section class="sm-col sm-col-12 md-col-9 lg-col-9 fixed top-0 bottom-0 right-0 bg-white">
-            <!--Search-->
-            <div class='p2 mt2 mb2 clearfix'>
-                <div class='right'>
-                    <div data-el='dropdown'>
-                        <label for="dropdown-search" data-el='dropdown-trigger' class='btn border-none'>
-                            <svg width='20' height='20' class='align-middle'>
-                                <use xlink:href="libs/ibd/assets/icons/svgs.svg#search">
-                                </use>
-                            </svg>
-                        </label>
-                        <input data-el='dropdown-tracker' type="checkbox" id="dropdown-search" class='display-none' />
-                        <label for="dropdown-search" data-el='dropdown-overlay'>
-                        </label>
-                        <div data-el='dropdown-content'>
-                            <div class='sm-col sm-col-12 md-col-9 lg-col-9 fixed top-0 bottom-0 right-0'>
-                                <!--Mask-->
-                                <div class='absolute top-0 right-0 bottom-0 left-0 bg-white opacity-70'>
-                                </div>
-
-                                <!--Search Input-->
-                                <div class="p2 block relative z4" ng-class="{'filter--active':genSearchActive}">
-                                    <div class='py2 clearfix bg-white-90'>
-                                        <input id="genSearchInput" type="text" class="left field border-none color-block h5 bg-white-90" style='width: 70%' placeholder="Search..." ng-model="genSearchTerm" />
-                                        <label for="dropdown-search" data-el='dropdown-overlay' ng-click="genSearchTerm=null;genSearchActive=false;" class='right btn border-none'>
-                                            <svg width='12' height='12' class='align-middle'>
-                                                <use xlink:href="libs/ibd/assets/icons/svgs.svg#close">
-                                                </use>
-                                            </svg>
-                                        </label>
-                                    </div>
-                                </div>
-
-
-                                <!--Search Results-->
-                                <div style='height: calc(100% - 147px);' ibd-scroll='y' ibd-live>
-                                    <section class='p2 block relative z4'>
-                                        <div class='h5 caps py1 block bold'>
-                                            Search Results for '{{genSearchTerm}}'
-                                        </div>
-                                        <!--<ul id="gen__breadcrumb" class="list--inline">
-                                        <li>
-                                            <a href ng-click="genSearchActive=null">Cancel search</a>
-                                        </li>
-                                    </ul>-->
-                                        <div ng-repeat="result in genSearch track by $index" class='mt3'>
-                                            <label for="dropdown-search" data-el='dropdown-overlay' ng-click="updateView(result.hash); genSearchActive=null;">
-                                                <p class='h5 caps py1 block cursor-hand bold'>{{result.name}}
-                                                </p>
-                                            </label>
-                                            <code class='h6'>{{result.type}}</code>
-                                            <p gen-markdown="result.description"></p>
-                                        </div>
-                                    </section>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
+    <!--Main Section-->
+    <!--<section class='relative'>
+    </section>-->
+    <section class="clearfix pl-px-100">
+        <div class="p3">
+            <!--Doc Name-->
+            <div class="clearfix border-bottom">
+                <div ng-bind-html="::model.options.title | trusted" class='left h4 bold block caps py15'>
+                </div>
+                <div class="right">
+                    <!--TODO: Powered by Generous-->
                 </div>
             </div>
 
 
+            <!--Search Results-->
+            <section class='p2'>
+                <div class="clearfix border-bottom">
+                    <div class="left">
+                        <div class='h6 caps py1 semi-bold'>
+                            Search Results for '{{genSearchTerm}}'
+                        </div>
+                    </div>
+                    <div class="right">
+                        <ul>
+                            <li>
+                                <a href ng-click="genSearchActive=null">(Cancel search)</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div ng-repeat="result in genSearch track by $index" class='mt3'>
+                    <label for="dropdown-search" data-el='dropdown-overlay' ng-click="updateView(result.hash); genSearchActive=null;">
+                        <p class='h6 caps py1 block cursor-hand semi-bold'>{{result.name}}
+                        </p>
+                    </label>
+                    <code class='h6'>{{result.type}}</code>
+                    <p gen-markdown="result.description"></p>
+                </div>
+            </section>
 
 
-            <main ng-class="{'view--full':!genViewSource, 'view--split':genViewSource && !genSearchActive}" style='height: calc(100% - 147px);' ibd-scroll='y' ibd-live>
+            <main ng-class="{'view--full':!genViewSource, 'view--split':genViewSource && !genSearchActive}">
                 <div class="px2">
 
                     <section ng-show="!genSearchActive" class='py1'>
@@ -284,9 +282,9 @@
                     <div hljs hljs-linums="genSourceLines" source="genSourceCode"></div>
                 </div>
             </aside>
-
-        </section>
+        </div>
     </section>
+
 
 </body>
 

@@ -1,0 +1,1034 @@
+{
+  "options": {
+    "src": [
+      "src/**/*.scss"
+    ],
+    "title": "el-base",
+    "dest": "./build/docs/",
+    "denominator": "generous",
+    "example": [
+      "html",
+      "javascript",
+      "css",
+      "head"
+    ],
+    "sourceLink": true,
+    "sourceEditor": "plunker"
+  },
+  "data": [
+    {
+      "generous": {
+        "source": "..\\..\\src\\_border.scss",
+        "line": {
+          "from": 1,
+          "to": 21
+        }
+      },
+      "type": "module",
+      "name": "border",
+      "description": "List of CSS Selectors for altering the border property of a DOM element.",
+      "parameters": [
+        {
+          "name": "border",
+          "description": "Applies border on all sides.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "border-top",
+          "description": "Applies border on the top.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "border-right",
+          "description": "Applies border on the right.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "border-bottom",
+          "description": "Applies border on the bottom.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "border-left",
+          "description": "Applies border on the left.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "border-none",
+          "description": "Removes borer on the element.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "circle",
+          "description": "Applies a circular border radius of 50% on the element.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "border-bottom",
+          "description": "Applies border on the bottom.",
+          "type": "className",
+          "optional": false
+        }
+      ],
+      "shortName": "border",
+      "id": "border",
+      "example": null
+    },
+    {
+      "generous": {
+        "source": "..\\..\\src\\_base.scss",
+        "line": {
+          "from": 1,
+          "to": 8
+        }
+      },
+      "type": "module",
+      "name": "reset",
+      "description": "  By default all anchors are applied a default style, with hover and other states picking up the accent from the chosen theme.",
+      "shortName": "reset",
+      "id": "reset",
+      "example": null
+    },
+    {
+      "generous": {
+        "source": "..\\..\\src\\_components.scss",
+        "line": {
+          "from": 1,
+          "to": 8
+        }
+      },
+      "type": "module",
+      "name": "components",
+      "description": "List of css only components.",
+      "shortName": "components",
+      "id": "components",
+      "example": null,
+      "children": [
+        {
+          "generous": {
+            "source": "..\\..\\src\\_components.scss",
+            "line": {
+              "from": 14,
+              "to": 46
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "checkbox",
+          "description": "A CSS styled checkbox component. Refer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "checkbox"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n        <div data-el='checkbox'>\n           <input id=\"check1\" type=\"checkbox\" name=\"check\" value=\"check1\">\n           <label data-el='trigger' for=\"check1\">Checkbox No. 1</label>\n       </div>\n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n       \n   "
+          },
+          "shortName": "checkbox",
+          "id": "checkbox"
+        },
+        {
+          "generous": {
+            "source": "..\\..\\src\\_components.scss",
+            "line": {
+              "from": 49,
+              "to": 80
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "radio",
+          "description": "A CSS styled radio component. Refer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='radio'] and the label for the radio.",
+              "type": "attribute",
+              "optional": false,
+              "default": "radio"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the radio to help toggling the state of the radio.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n       <div data-el='radio'>\n           <input id=\"radio1\" type=\"radio\" name=\"radio1\" value=\"radio1\">\n           <label data-el='trigger' for=\"radio1\">Option 1</label>\n       </div>    \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n       \n   "
+          },
+          "shortName": "radio",
+          "id": "radio"
+        },
+        {
+          "generous": {
+            "source": "..\\..\\src\\_components.scss",
+            "line": {
+              "from": 140,
+              "to": 170
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "switch",
+          "description": "Switch component which is a styled variant of the checkbox. Refer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "switch"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n       <div data-el='switch'>\n           <input id=\"check1\" type=\"checkbox\" name=\"check\" value=\"check1\">\n           <label data-el='trigger' for=\"check1\"></label>\n       </div>        \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
+          },
+          "shortName": "switch",
+          "id": "switch"
+        },
+        {
+          "generous": {
+            "source": "..\\..\\src\\_components.scss",
+            "line": {
+              "from": 209,
+              "to": 273
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "accordion",
+          "description": "An accordion component which helps display nested level data with a grouped hierachical representation of a heading and content.\nComes in two variants. Open one at a time (when the nested input is of type radio) and (or) Open multiple (when the nested input is of type checkbox).\nRefer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] or input[type='radio'] and the label for the checkbox or radio.",
+              "type": "attribute",
+              "optional": false,
+              "default": "accordion"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n        <div class=\"clearfix px4\">\n           <div class=\"col-6 py1\">\n               <h5 class='caps bold'>One at a time</h5>\n               <div data-el='accordion'>\n                   <input type=\"radio\" id=\"collapse-1\" aria-hidden=\"true\" name='groupAccordion' />\n                   <label data-el='trigger' for=\"collapse-1\">Heading 1</label>\n                   <div data-el='content'>\n                       Content 1\n                   </div>\n               </div>\n               <div data-el='accordion'>\n                   <input type=\"radio\" id=\"collapse-2\" aria-hidden=\"true\" name='groupAccordion' />\n                   <label data-el='trigger' for=\"collapse-2\">Heading 2</label>\n                   <div data-el='content'>\n                       Content 2\n                   </div>\n               </div>\n           </div>\n           <div class=\"col-6 py1\">\n               <h5 class='caps bold'>Multiple</h5>\n               <div data-el='accordion'>\n                   <input type=\"checkbox\" id=\"collapse-3\" aria-hidden=\"true\" />\n                   <label data-el='trigger' for=\"collapse-3\">Heading 1</label>\n                   <div data-el='content'>\n                       Content 1\n                   </div>\n               </div>\n               <div data-el='accordion'>\n                   <input type=\"checkbox\" id=\"collapse-4\" aria-hidden=\"true\" />\n                   <label data-el='trigger' for=\"collapse-4\">Heading 2</label>\n                   <div data-el='content'>\n                       Content 2\n                   </div>\n               </div>\n           </div>\n       </div>    \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
+          },
+          "shortName": "accordion",
+          "id": "accordion"
+        },
+        {
+          "generous": {
+            "source": "..\\..\\src\\_components.scss",
+            "line": {
+              "from": 321,
+              "to": 358
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "dropdown",
+          "description": "Dropdown - is a component of type menu appearing below a menu title when it is selected, and remaining until used or dismissed.\nRefer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "dropdown"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            },
+            {
+              "name": "data-el",
+              "description": "The overlay mask DOM element which un-sets the checkbox when clicked outside the dropdown panel.",
+              "type": "attribute",
+              "optional": false,
+              "default": "mask"
+            },
+            {
+              "name": "data-el",
+              "description": "DOM element which contains the contents of the dropdown panel.",
+              "type": "attribute",
+              "optional": false,
+              "default": "content"
+            }
+          ],
+          "example": {
+            "html": "\n      <div data-el='dropdown'>\n           <input type=\"checkbox\" id=\"dropdown-1\"/>\n           <label data-el='trigger' for=\"dropdown-1\" class=\"btn\">Dropdown</label>\n           <label data-el='mask' for=\"dropdown-1\"></label>\n           <div data-el='content' class='border bg-white-50 p1'>\n               Content\n           </div>\n       </div>      \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
+          },
+          "shortName": "dropdown",
+          "id": "dropdown"
+        }
+      ]
+    },
+    {
+      "generous": {
+        "source": "..\\..\\src\\_btn.scss",
+        "line": {
+          "from": 1,
+          "to": 27
+        }
+      },
+      "type": "module",
+      "name": "button",
+      "description": " List of CSS Selectors for altering an element of type button or to make any element look like a button.\n Default input[type='button'] is not overriden to provide flexibility of styling.\n The accent's used for different states of the button is driven by the chosen theme.",
+      "parameters": [
+        {
+          "name": "btn",
+          "description": "Applies styles to an element to make it look like a button.",
+          "type": "className",
+          "optional": false,
+          "properties": [
+            {
+              "name": "active",
+              "description": "Set's active state on button.",
+              "type": "className",
+              "optional": false,
+              "isProperty": true
+            },
+            {
+              "name": "focused",
+              "description": "Set's focused state on button.",
+              "type": "className",
+              "optional": false,
+              "isProperty": true
+            },
+            {
+              "name": "disabled",
+              "description": "Set's disabled state on button.",
+              "type": "className",
+              "optional": false,
+              "isProperty": true
+            },
+            {
+              "name": "hover-none",
+              "description": "To disable hover effect on the button.",
+              "type": "className",
+              "optional": false,
+              "isProperty": true
+            }
+          ]
+        },
+        {
+          "name": "btn-primary",
+          "description": "Applies primary button style to an element.\n  A primary style uses the base theme accent.\n  The states for a primary button element is the same as default button.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "btn-link",
+          "description": "Applies primary button style to an element.\n  A primary style uses the base theme accent.\n  THe states for a primary button element is the same as default button.",
+          "type": "className",
+          "optional": false
+        }
+      ],
+      "shortName": "button",
+      "id": "button",
+      "example": null
+    },
+    {
+      "generous": {
+        "source": "..\\..\\src\\_base.scss",
+        "line": {
+          "from": 25,
+          "to": 34
+        }
+      },
+      "type": "module",
+      "name": "anchor",
+      "description": "  By default all anchors are applied a default style, with hover and other states picking up the accent from the chosen theme.",
+      "parameters": [
+        {
+          "name": "''",
+          "description": "When no class is applied to an anchor it gets a default style based on the theme.",
+          "type": "className",
+          "optional": false
+        },
+        {
+          "name": "a-primary",
+          "description": "This is a variant of the default anchor style.",
+          "type": "className",
+          "optional": false
+        }
+      ],
+      "shortName": "anchor",
+      "id": "anchor",
+      "example": null
+    },
+    {
+      "generous": {
+        "source": "..\\..\\src\\_fonts.scss",
+        "line": {
+          "from": 1,
+          "to": 30
+        }
+      },
+      "type": "module\n@",
+      "name": "fonts",
+      "description": "The CSS library uses OpenSans as a font-family of choice for all its typography.\nThis font-family is set on the body of the page & has the below three variants which can be set using CSS selectors.      \n\nREGULAR: All typogrpahy used",
+      "parameters": [
+        {
+          "name": "REGULAR",
+          "description": "The de-facto font-family for all t.",
+          "type": "variant",
+          "optional": false
+        }
+      ],
+      "example": {
+        "html": "\n    <div class='dw-px-100 dh-px-100 bg-accent'>            \n    </div>    \n",
+        "javascript": null,
+        "css": "\n    html, body{\n        padding: 25px;\n        font-size: 12px;   \n    }\n",
+        "head": "        \n    <link href=\"../dist/el-base-purple.min.css\" rel=\"stylesheet\" type=\"text/css\">\n    \n"
+      },
+      "shortName": "fonts",
+      "id": "fonts"
+    },
+    {
+      "generous": {
+        "source": "..\\..\\src\\_palette.scss",
+        "line": {
+          "from": 1,
+          "to": 10
+        }
+      },
+      "type": "module",
+      "name": "palette",
+      "description": "List of brushes available with the monochromatic palette.\r\nSeveral utility chainable classes are available to target the brushes from the palette to properties on an element.\r",
+      "shortName": "palette",
+      "id": "palette",
+      "example": null,
+      "children": [
+        {
+          "generous": {
+            "source": "..\\..\\src\\_color.scss",
+            "line": {
+              "from": 30,
+              "to": 64
+            }
+          },
+          "type": "module",
+          "parent": "palette",
+          "name": "color",
+          "description": "List of helper CSS selectors to target the color property of an element.",
+          "parameters": [
+            {
+              "name": "color-transparent",
+              "description": "Transparent brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white",
+              "description": "White brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-90",
+              "description": "White brush with alpha percentage of 90.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-80",
+              "description": "White brush with alpha percentage of 80.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-70",
+              "description": "White brush with alpha percentage of 70.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-60",
+              "description": "White brush with alpha percentage of 60.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-50",
+              "description": "White brush with alpha percentage of 50.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-40",
+              "description": "White brush with alpha percentage of 40.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-30",
+              "description": "White brush with alpha percentage of 30.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-20",
+              "description": "White brush with alpha percentage of 20.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-white-10",
+              "description": "White brush with alpha percentage of 10.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black",
+              "description": "Black brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-90",
+              "description": "Black brush with alpha percentage of 90.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-80",
+              "description": "Black brush with alpha percentage of 80.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-70",
+              "description": "Black brush with alpha percentage of 70.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-60",
+              "description": "Black brush with alpha percentage of 60.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-50",
+              "description": "Black brush with alpha percentage of 50.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-40",
+              "description": "Black brush with alpha percentage of 40.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-30",
+              "description": "Black brush with alpha percentage of 30.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-20",
+              "description": "Black brush with alpha percentage of 20.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-black-10",
+              "description": "Black brush with alpha percentage of 10.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-green",
+              "description": "Green / Success status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-amber",
+              "description": "Amber / Warning status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-red",
+              "description": "Red / Error status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "color-accent",
+              "description": "Accent brush based on the chosen theme.",
+              "type": "className",
+              "optional": false
+            }
+          ],
+          "shortName": "color",
+          "id": "color",
+          "example": null
+        },
+        {
+          "generous": {
+            "source": "..\\..\\src\\_color.scss",
+            "line": {
+              "from": 69,
+              "to": 102
+            }
+          },
+          "type": "module",
+          "parent": "palette",
+          "name": "background-color",
+          "description": "List of helper CSS selectors to target the background-color property of an element.",
+          "parameters": [
+            {
+              "name": "bg-transparent",
+              "description": "Transparent brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white",
+              "description": "White brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-90",
+              "description": "White brush with alpha percentage of 90.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-80",
+              "description": "White brush with alpha percentage of 80.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-70",
+              "description": "White brush with alpha percentage of 70.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-60",
+              "description": "White brush with alpha percentage of 60.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-50",
+              "description": "White brush with alpha percentage of 50.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-40",
+              "description": "White brush with alpha percentage of 40.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-30",
+              "description": "White brush with alpha percentage of 30.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-20",
+              "description": "White brush with alpha percentage of 20.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-white-10",
+              "description": "White brush with alpha percentage of 10.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black",
+              "description": "Black brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-90",
+              "description": "Black brush with alpha percentage of 90.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-80",
+              "description": "Black brush with alpha percentage of 80.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-70",
+              "description": "Black brush with alpha percentage of 70.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-60",
+              "description": "Black brush with alpha percentage of 60.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-50",
+              "description": "Black brush with alpha percentage of 50.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-40",
+              "description": "Black brush with alpha percentage of 40.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-30",
+              "description": "Black brush with alpha percentage of 30.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-20",
+              "description": "Black brush with alpha percentage of 20.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-black-10",
+              "description": "Black brush with alpha percentage of 10.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-green",
+              "description": "Green / Success status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-amber",
+              "description": "Amber / Warning status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-red",
+              "description": "Red / Error status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "bg-accent",
+              "description": "Accent brush based on the chosen theme.",
+              "type": "className",
+              "optional": false
+            }
+          ],
+          "shortName": "background-Color",
+          "id": "background-Color",
+          "example": null
+        },
+        {
+          "generous": {
+            "source": "..\\..\\src\\_color.scss",
+            "line": {
+              "from": 107,
+              "to": 141
+            }
+          },
+          "type": "module",
+          "parent": "palette",
+          "name": "border-color",
+          "description": "List of helper CSS selectors to target the background-color property of an element.",
+          "parameters": [
+            {
+              "name": "border-transparent",
+              "description": "Transparent brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white",
+              "description": "White brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-90",
+              "description": "White brush with alpha percentage of 90.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-80",
+              "description": "White brush with alpha percentage of 80.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-70",
+              "description": "White brush with alpha percentage of 70.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-60",
+              "description": "White brush with alpha percentage of 60.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-50",
+              "description": "White brush with alpha percentage of 50.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-40",
+              "description": "White brush with alpha percentage of 40.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-30",
+              "description": "White brush with alpha percentage of 30.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-20",
+              "description": "White brush with alpha percentage of 20.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-white-10",
+              "description": "White brush with alpha percentage of 10.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black",
+              "description": "Black brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-90",
+              "description": "Black brush with alpha percentage of 90.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-80",
+              "description": "Black brush with alpha percentage of 80.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-70",
+              "description": "Black brush with alpha percentage of 70.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-60",
+              "description": "Black brush with alpha percentage of 60.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-50",
+              "description": "Black brush with alpha percentage of 50.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-40",
+              "description": "Black brush with alpha percentage of 40.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-30",
+              "description": "Black brush with alpha percentage of 30.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-20",
+              "description": "Black brush with alpha percentage of 20.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-black-10",
+              "description": "Black brush with alpha percentage of 10.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-green",
+              "description": "Green / Success status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-amber",
+              "description": "Amber / Warning status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-red",
+              "description": "Red / Error status brush.",
+              "type": "className",
+              "optional": false
+            },
+            {
+              "name": "border-accent",
+              "description": "Accent brush based on the chosen theme.",
+              "type": "className",
+              "optional": false
+            }
+          ],
+          "shortName": "border-Color",
+          "id": "border-Color",
+          "example": null
+        }
+      ]
+    },
+    {
+      "generous": {
+        "source": "..\\..\\src\\index.before.scss",
+        "line": {
+          "from": 1,
+          "to": 10
+        }
+      },
+      "type": "module",
+      "name": "themes",
+      "description": "List of themes.\r\nUnder the monochromatic palette schema, a theme vairant is the choice of an accent brush that gets applied to various elements and their states.\r\nTo use a theme, a style-sheet of the relevant accent is appended to the head section of the page. \r",
+      "shortName": "themes",
+      "id": "themes",
+      "example": null,
+      "children": [
+        {
+          "generous": {
+            "source": "..\\..\\src\\index.blue.scss",
+            "line": {
+              "from": 1,
+              "to": 27
+            }
+          },
+          "type": "module",
+          "parent": "themes",
+          "name": "blue",
+          "description": "Blue theme / accent for the elements CSS library.\nHEX: #1167a0",
+          "parameters": [
+            {
+              "name": "#1167a0",
+              "description": "The hex for the Blue accent brush.",
+              "type": "hex",
+              "optional": false
+            }
+          ],
+          "example": {
+            "html": "\n    <div class='dw-px-100 dh-px-100 bg-accent'>            \n    </div>    \n",
+            "javascript": null,
+            "css": "\n    html, body{\n        padding: 25px;\n        font-size: 12px;   \n    }\n",
+            "head": "        \n    <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n    \n"
+          },
+          "shortName": "blue",
+          "id": "blue"
+        },
+        {
+          "generous": {
+            "source": "..\\..\\src\\index.purple.scss",
+            "line": {
+              "from": 1,
+              "to": 27
+            }
+          },
+          "type": "module",
+          "parent": "themes",
+          "name": "purple",
+          "description": "Purple theme / accent for the elements CSS library.\nHEX: #6c4cfe",
+          "parameters": [
+            {
+              "name": "#6c4cfe",
+              "description": "The hex for the Purple accent brush.",
+              "type": "hex",
+              "optional": false
+            }
+          ],
+          "example": {
+            "html": "\n    <div class='dw-px-100 dh-px-100 bg-accent'>            \n    </div>    \n",
+            "javascript": null,
+            "css": "\n    html, body{\n        padding: 25px;\n        font-size: 12px;   \n    }\n",
+            "head": "        \n    <link href=\"../dist/el-base-purple.min.css\" rel=\"stylesheet\" type=\"text/css\">\n    \n"
+          },
+          "shortName": "purple",
+          "id": "purple"
+        }
+      ]
+    }
+  ]
+}
