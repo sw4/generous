@@ -33,20 +33,21 @@
     </button>
 
     <!--Left side Navigation-->
-    <nav class='fixed top-0 bottom-0 left-0 p2 dw-px-100 border-right'>
-
+    <nav class='fixed top-0 bottom-0 left-0 p2 w-px-100 border-right'>
         <!--Menu-->
         <div data-el='dropdown' class='mt2'>
             <input type="checkbox" id="dropdown-items" />
-            <label data-el='trigger' for="dropdown-items" class="btn p05">
-                <label data-el='mask' for="dropdown-items" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90'>
+
+            <!--Menu Icon-->
+            <label data-el='trigger' for="dropdown-items" class="btn p05 border-none">
+                <label data-el='mask' for="dropdown-items" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90 border border-black'>
                 </label>
             <svg width='22' height='22'>
                     <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-1181"></use>
                 </svg>
             </label>
             <label data-el='mask' for="dropdown-items"></label>
-            <div data-el='content' class='p1 dw-px-300 bg-white-90 border border-black'>
+            <div data-el='content' class='p1 w-px-300 bg-white-90 border-right left-px-100 top-px-0 overflow-auto mt0 h-pct-100'>
                 <div ng-repeat="parent in model.data" class='py1'>
                     <a href class="h6 caps block bold" ng-click="updateView(parent.hash)">
                             {{parent.name}}
@@ -78,15 +79,15 @@
         <!--Search-->
         <div data-el='dropdown' class='mt2'>
             <input type="checkbox" id="dropdown-search" />
-            <label data-el='trigger' for="dropdown-search" class="btn p05">
-                <label data-el='mask' for="dropdown-search" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90'>
+            <label data-el='trigger' for="dropdown-search" class="btn p05 border-none">
+                <label data-el='mask' for="dropdown-search" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90 border border-black'>
                 </label>
             <svg width='22' height='22'>
                     <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-464"></use>
                 </svg>
             </label>
             <label data-el='mask' for="dropdown-search"></label>
-            <div data-el='content' class='p1 dw-px-400 bg-white-90 border border-black'>
+            <div data-el='content' class='p1 w-px-400 bg-white-90 border border-black'>
                 <!--Search Input-->
                 <div class='clearfix bg-white' ng-class="{'filter--active':genSearchActive}">
                     <input id="genSearchInput" type="text" class="left field border-none color-block h5" style='width: 70%' placeholder="Search..." ng-model="genSearchTerm" />

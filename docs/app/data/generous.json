@@ -19,7 +19,7 @@
     {
       "examples": [],
       "generous": {
-        "source": "..\\data\\generous.info",
+        "source": "../data/generous.info",
         "line": {
           "from": 19,
           "to": 23
@@ -33,7 +33,7 @@
         {
           "examples": [],
           "generous": {
-            "source": "..\\data\\install&build.info",
+            "source": "../data/install&build.info",
             "line": {
               "from": 3,
               "to": 11
@@ -49,7 +49,7 @@
         {
           "examples": [],
           "generous": {
-            "source": "..\\data\\install&build.info",
+            "source": "../data/install&build.info",
             "line": {
               "from": 14,
               "to": 20
@@ -65,7 +65,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\buildoptions.info",
+                "source": "../data/buildoptions.info",
                 "line": {
                   "from": 1,
                   "to": 9
@@ -81,7 +81,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\buildoptions.info",
+                "source": "../data/buildoptions.info",
                 "line": {
                   "from": 20,
                   "to": 28
@@ -97,7 +97,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\buildoptions.info",
+                "source": "../data/buildoptions.info",
                 "line": {
                   "from": 30,
                   "to": 42
@@ -113,7 +113,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\buildoptions.info",
+                "source": "../data/buildoptions.info",
                 "line": {
                   "from": 44,
                   "to": 51
@@ -129,7 +129,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\buildoptions.info",
+                "source": "../data/buildoptions.info",
                 "line": {
                   "from": 53,
                   "to": 62
@@ -145,7 +145,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\buildoptions.info",
+                "source": "../data/buildoptions.info",
                 "line": {
                   "from": 66,
                   "to": 75
@@ -161,7 +161,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\buildoptions.info",
+                "source": "../data/buildoptions.info",
                 "line": {
                   "from": 11,
                   "to": 18
@@ -179,7 +179,7 @@
         {
           "examples": [],
           "generous": {
-            "source": "..\\data\\install&build.info",
+            "source": "../data/install&build.info",
             "line": {
               "from": 23,
               "to": 48
@@ -197,7 +197,7 @@
     {
       "examples": [],
       "generous": {
-        "source": "..\\data\\generous.info",
+        "source": "../data/generous.info",
         "line": {
           "from": 1,
           "to": 17
@@ -212,7 +212,7 @@
     {
       "examples": [],
       "generous": {
-        "source": "..\\data\\generous.info",
+        "source": "../data/generous.info",
         "line": {
           "from": 26,
           "to": 30
@@ -226,7 +226,7 @@
         {
           "examples": [],
           "generous": {
-            "source": "..\\data\\usage.info",
+            "source": "../data/usage.info",
             "line": {
               "from": 2,
               "to": 9
@@ -242,7 +242,7 @@
         {
           "examples": [],
           "generous": {
-            "source": "..\\data\\usage.info",
+            "source": "../data/usage.info",
             "line": {
               "from": 15,
               "to": 22
@@ -258,7 +258,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 1,
                   "to": 9
@@ -274,7 +274,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 11,
                   "to": 18
@@ -290,7 +290,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 21,
                   "to": 29
@@ -306,7 +306,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 32,
                   "to": 41
@@ -322,7 +322,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 43,
                   "to": 51
@@ -338,7 +338,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 54,
                   "to": 63
@@ -354,7 +354,7 @@
             {
               "examples": [],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 65,
                   "to": 79
@@ -400,7 +400,7 @@
                 }
               ],
               "generous": {
-                "source": "..\\data\\tags.info",
+                "source": "../data/tags.info",
                 "line": {
                   "from": 81,
                   "to": 138

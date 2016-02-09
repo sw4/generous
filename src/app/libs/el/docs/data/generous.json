@@ -18,10 +18,25 @@
   "data": [
     {
       "generous": {
-        "source": "..\\..\\src\\_border.scss",
+        "source": "../../src/_base.scss",
         "line": {
           "from": 1,
-          "to": 21
+          "to": 8
+        }
+      },
+      "type": "module",
+      "name": "reset",
+      "description": "  By default all anchors are applied a default style, with hover and other states picking up the accent from the chosen theme.",
+      "shortName": "reset",
+      "id": "reset",
+      "example": null
+    },
+    {
+      "generous": {
+        "source": "../../src/_border.scss",
+        "line": {
+          "from": 1,
+          "to": 20
         }
       },
       "type": "module",
@@ -65,14 +80,8 @@
           "optional": false
         },
         {
-          "name": "circle",
+          "name": "borrder-circular",
           "description": "Applies a circular border radius of 50% on the element.",
-          "type": "className",
-          "optional": false
-        },
-        {
-          "name": "border-bottom",
-          "description": "Applies border on the bottom.",
           "type": "className",
           "optional": false
         }
@@ -83,238 +92,7 @@
     },
     {
       "generous": {
-        "source": "..\\..\\src\\_base.scss",
-        "line": {
-          "from": 1,
-          "to": 8
-        }
-      },
-      "type": "module",
-      "name": "reset",
-      "description": "  By default all anchors are applied a default style, with hover and other states picking up the accent from the chosen theme.",
-      "shortName": "reset",
-      "id": "reset",
-      "example": null
-    },
-    {
-      "generous": {
-        "source": "..\\..\\src\\_components.scss",
-        "line": {
-          "from": 1,
-          "to": 8
-        }
-      },
-      "type": "module",
-      "name": "components",
-      "description": "List of css only components.",
-      "shortName": "components",
-      "id": "components",
-      "example": null,
-      "children": [
-        {
-          "generous": {
-            "source": "..\\..\\src\\_components.scss",
-            "line": {
-              "from": 14,
-              "to": 46
-            }
-          },
-          "type": "module",
-          "parent": "components",
-          "name": "checkbox",
-          "description": "A CSS styled checkbox component. Refer example below for usage.",
-          "parameters": [
-            {
-              "name": "data-el",
-              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
-              "type": "attribute",
-              "optional": false,
-              "default": "checkbox"
-            },
-            {
-              "name": "data-el",
-              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
-              "type": "attribute",
-              "optional": false,
-              "default": "trigger"
-            }
-          ],
-          "example": {
-            "html": "\n        <div data-el='checkbox'>\n           <input id=\"check1\" type=\"checkbox\" name=\"check\" value=\"check1\">\n           <label data-el='trigger' for=\"check1\">Checkbox No. 1</label>\n       </div>\n   ",
-            "javascript": "\n\n   ",
-            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
-            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n       \n   "
-          },
-          "shortName": "checkbox",
-          "id": "checkbox"
-        },
-        {
-          "generous": {
-            "source": "..\\..\\src\\_components.scss",
-            "line": {
-              "from": 49,
-              "to": 80
-            }
-          },
-          "type": "module",
-          "parent": "components",
-          "name": "radio",
-          "description": "A CSS styled radio component. Refer example below for usage.",
-          "parameters": [
-            {
-              "name": "data-el",
-              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='radio'] and the label for the radio.",
-              "type": "attribute",
-              "optional": false,
-              "default": "radio"
-            },
-            {
-              "name": "data-el",
-              "description": "Applied to the label for the radio to help toggling the state of the radio.",
-              "type": "attribute",
-              "optional": false,
-              "default": "trigger"
-            }
-          ],
-          "example": {
-            "html": "\n       <div data-el='radio'>\n           <input id=\"radio1\" type=\"radio\" name=\"radio1\" value=\"radio1\">\n           <label data-el='trigger' for=\"radio1\">Option 1</label>\n       </div>    \n   ",
-            "javascript": "\n\n   ",
-            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
-            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n       \n   "
-          },
-          "shortName": "radio",
-          "id": "radio"
-        },
-        {
-          "generous": {
-            "source": "..\\..\\src\\_components.scss",
-            "line": {
-              "from": 140,
-              "to": 170
-            }
-          },
-          "type": "module",
-          "parent": "components",
-          "name": "switch",
-          "description": "Switch component which is a styled variant of the checkbox. Refer example below for usage.",
-          "parameters": [
-            {
-              "name": "data-el",
-              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
-              "type": "attribute",
-              "optional": false,
-              "default": "switch"
-            },
-            {
-              "name": "data-el",
-              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
-              "type": "attribute",
-              "optional": false,
-              "default": "trigger"
-            }
-          ],
-          "example": {
-            "html": "\n       <div data-el='switch'>\n           <input id=\"check1\" type=\"checkbox\" name=\"check\" value=\"check1\">\n           <label data-el='trigger' for=\"check1\"></label>\n       </div>        \n   ",
-            "javascript": "\n\n   ",
-            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
-            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
-          },
-          "shortName": "switch",
-          "id": "switch"
-        },
-        {
-          "generous": {
-            "source": "..\\..\\src\\_components.scss",
-            "line": {
-              "from": 209,
-              "to": 273
-            }
-          },
-          "type": "module",
-          "parent": "components",
-          "name": "accordion",
-          "description": "An accordion component which helps display nested level data with a grouped hierachical representation of a heading and content.\nComes in two variants. Open one at a time (when the nested input is of type radio) and (or) Open multiple (when the nested input is of type checkbox).\nRefer example below for usage.",
-          "parameters": [
-            {
-              "name": "data-el",
-              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] or input[type='radio'] and the label for the checkbox or radio.",
-              "type": "attribute",
-              "optional": false,
-              "default": "accordion"
-            },
-            {
-              "name": "data-el",
-              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
-              "type": "attribute",
-              "optional": false,
-              "default": "trigger"
-            }
-          ],
-          "example": {
-            "html": "\n        <div class=\"clearfix px4\">\n           <div class=\"col-6 py1\">\n               <h5 class='caps bold'>One at a time</h5>\n               <div data-el='accordion'>\n                   <input type=\"radio\" id=\"collapse-1\" aria-hidden=\"true\" name='groupAccordion' />\n                   <label data-el='trigger' for=\"collapse-1\">Heading 1</label>\n                   <div data-el='content'>\n                       Content 1\n                   </div>\n               </div>\n               <div data-el='accordion'>\n                   <input type=\"radio\" id=\"collapse-2\" aria-hidden=\"true\" name='groupAccordion' />\n                   <label data-el='trigger' for=\"collapse-2\">Heading 2</label>\n                   <div data-el='content'>\n                       Content 2\n                   </div>\n               </div>\n           </div>\n           <div class=\"col-6 py1\">\n               <h5 class='caps bold'>Multiple</h5>\n               <div data-el='accordion'>\n                   <input type=\"checkbox\" id=\"collapse-3\" aria-hidden=\"true\" />\n                   <label data-el='trigger' for=\"collapse-3\">Heading 1</label>\n                   <div data-el='content'>\n                       Content 1\n                   </div>\n               </div>\n               <div data-el='accordion'>\n                   <input type=\"checkbox\" id=\"collapse-4\" aria-hidden=\"true\" />\n                   <label data-el='trigger' for=\"collapse-4\">Heading 2</label>\n                   <div data-el='content'>\n                       Content 2\n                   </div>\n               </div>\n           </div>\n       </div>    \n   ",
-            "javascript": "\n\n   ",
-            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
-            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
-          },
-          "shortName": "accordion",
-          "id": "accordion"
-        },
-        {
-          "generous": {
-            "source": "..\\..\\src\\_components.scss",
-            "line": {
-              "from": 321,
-              "to": 358
-            }
-          },
-          "type": "module",
-          "parent": "components",
-          "name": "dropdown",
-          "description": "Dropdown - is a component of type menu appearing below a menu title when it is selected, and remaining until used or dismissed.\nRefer example below for usage.",
-          "parameters": [
-            {
-              "name": "data-el",
-              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
-              "type": "attribute",
-              "optional": false,
-              "default": "dropdown"
-            },
-            {
-              "name": "data-el",
-              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
-              "type": "attribute",
-              "optional": false,
-              "default": "trigger"
-            },
-            {
-              "name": "data-el",
-              "description": "The overlay mask DOM element which un-sets the checkbox when clicked outside the dropdown panel.",
-              "type": "attribute",
-              "optional": false,
-              "default": "mask"
-            },
-            {
-              "name": "data-el",
-              "description": "DOM element which contains the contents of the dropdown panel.",
-              "type": "attribute",
-              "optional": false,
-              "default": "content"
-            }
-          ],
-          "example": {
-            "html": "\n      <div data-el='dropdown'>\n           <input type=\"checkbox\" id=\"dropdown-1\"/>\n           <label data-el='trigger' for=\"dropdown-1\" class=\"btn\">Dropdown</label>\n           <label data-el='mask' for=\"dropdown-1\"></label>\n           <div data-el='content' class='border bg-white-50 p1'>\n               Content\n           </div>\n       </div>      \n   ",
-            "javascript": "\n\n   ",
-            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
-            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
-          },
-          "shortName": "dropdown",
-          "id": "dropdown"
-        }
-      ]
-    },
-    {
-      "generous": {
-        "source": "..\\..\\src\\_btn.scss",
+        "source": "../../src/_btn.scss",
         "line": {
           "from": 1,
           "to": 27
@@ -379,7 +157,223 @@
     },
     {
       "generous": {
-        "source": "..\\..\\src\\_base.scss",
+        "source": "../../src/_components.scss",
+        "line": {
+          "from": 1,
+          "to": 8
+        }
+      },
+      "type": "module",
+      "name": "components",
+      "description": "List of css only components.",
+      "shortName": "components",
+      "id": "components",
+      "example": null,
+      "children": [
+        {
+          "generous": {
+            "source": "../../src/_components.scss",
+            "line": {
+              "from": 49,
+              "to": 80
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "radio",
+          "description": "A CSS styled radio component. Refer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='radio'] and the label for the radio.",
+              "type": "attribute",
+              "optional": false,
+              "default": "radio"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the radio to help toggling the state of the radio.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n       <div data-el='radio'>\n           <input id=\"radio1\" type=\"radio\" name=\"radio1\" value=\"radio1\">\n           <label data-el='trigger' for=\"radio1\">Option 1</label>\n       </div>    \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n       \n   "
+          },
+          "shortName": "radio",
+          "id": "radio"
+        },
+        {
+          "generous": {
+            "source": "../../src/_components.scss",
+            "line": {
+              "from": 14,
+              "to": 46
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "checkbox",
+          "description": "A CSS styled checkbox component. Refer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "checkbox"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n        <div data-el='checkbox'>\n           <input id=\"check1\" type=\"checkbox\" name=\"check\" value=\"check1\">\n           <label data-el='trigger' for=\"check1\">Checkbox No. 1</label>\n       </div>\n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n       \n   "
+          },
+          "shortName": "checkbox",
+          "id": "checkbox"
+        },
+        {
+          "generous": {
+            "source": "../../src/_components.scss",
+            "line": {
+              "from": 140,
+              "to": 170
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "switch",
+          "description": "Switch component which is a styled variant of the checkbox. Refer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "switch"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n       <div data-el='switch'>\n           <input id=\"check1\" type=\"checkbox\" name=\"check\" value=\"check1\">\n           <label data-el='trigger' for=\"check1\"></label>\n       </div>        \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
+          },
+          "shortName": "switch",
+          "id": "switch"
+        },
+        {
+          "generous": {
+            "source": "../../src/_components.scss",
+            "line": {
+              "from": 209,
+              "to": 273
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "accordion",
+          "description": "An accordion component which helps display nested level data with a grouped hierachical representation of a heading and content.\nComes in two variants. Open one at a time (when the nested input is of type radio) and (or) Open multiple (when the nested input is of type checkbox).\nRefer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] or input[type='radio'] and the label for the checkbox or radio.",
+              "type": "attribute",
+              "optional": false,
+              "default": "accordion"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            }
+          ],
+          "example": {
+            "html": "\n        <div class=\"clearfix px4\">\n           <div class=\"col-6 py1\">\n               <h5 class='caps bold'>One at a time</h5>\n               <div data-el='accordion'>\n                   <input type=\"radio\" id=\"collapse-1\" aria-hidden=\"true\" name='groupAccordion' />\n                   <label data-el='trigger' for=\"collapse-1\">Heading 1</label>\n                   <div data-el='content'>\n                       Content 1\n                   </div>\n               </div>\n               <div data-el='accordion'>\n                   <input type=\"radio\" id=\"collapse-2\" aria-hidden=\"true\" name='groupAccordion' />\n                   <label data-el='trigger' for=\"collapse-2\">Heading 2</label>\n                   <div data-el='content'>\n                       Content 2\n                   </div>\n               </div>\n           </div>\n           <div class=\"col-6 py1\">\n               <h5 class='caps bold'>Multiple</h5>\n               <div data-el='accordion'>\n                   <input type=\"checkbox\" id=\"collapse-3\" aria-hidden=\"true\" />\n                   <label data-el='trigger' for=\"collapse-3\">Heading 1</label>\n                   <div data-el='content'>\n                       Content 1\n                   </div>\n               </div>\n               <div data-el='accordion'>\n                   <input type=\"checkbox\" id=\"collapse-4\" aria-hidden=\"true\" />\n                   <label data-el='trigger' for=\"collapse-4\">Heading 2</label>\n                   <div data-el='content'>\n                       Content 2\n                   </div>\n               </div>\n           </div>\n       </div>    \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
+          },
+          "shortName": "accordion",
+          "id": "accordion"
+        },
+        {
+          "generous": {
+            "source": "../../src/_components.scss",
+            "line": {
+              "from": 321,
+              "to": 358
+            }
+          },
+          "type": "module",
+          "parent": "components",
+          "name": "dropdown",
+          "description": "Dropdown - is a component of type menu appearing below a menu title when it is selected, and remaining until used or dismissed.\nRefer example below for usage.",
+          "parameters": [
+            {
+              "name": "data-el",
+              "description": "Applied to the parent wrapping DOM element to target styling for the nested input[type='checkbox'] and the label for the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "dropdown"
+            },
+            {
+              "name": "data-el",
+              "description": "Applied to the label for the checkbox to help toggling the state of the checkbox.",
+              "type": "attribute",
+              "optional": false,
+              "default": "trigger"
+            },
+            {
+              "name": "data-el",
+              "description": "The overlay mask DOM element which un-sets the checkbox when clicked outside the dropdown panel.",
+              "type": "attribute",
+              "optional": false,
+              "default": "mask"
+            },
+            {
+              "name": "data-el",
+              "description": "DOM element which contains the contents of the dropdown panel.",
+              "type": "attribute",
+              "optional": false,
+              "default": "content"
+            }
+          ],
+          "example": {
+            "html": "\n      <div data-el='dropdown'>\n           <input type=\"checkbox\" id=\"dropdown-1\"/>\n           <label data-el='trigger' for=\"dropdown-1\" class=\"btn\">Dropdown</label>\n           <label data-el='mask' for=\"dropdown-1\"></label>\n           <div data-el='content' class='border bg-white-50 p1'>\n               Content\n           </div>\n       </div>      \n   ",
+            "javascript": "\n\n   ",
+            "css": "\n       html, body{\n           padding: 25px;\n           font-size: 12px;   \n       }\n   ",
+            "head": "        \n       <link href=\"../dist/el-base-blue.min.css\" rel=\"stylesheet\" type=\"text/css\">\n   "
+          },
+          "shortName": "dropdown",
+          "id": "dropdown"
+        }
+      ]
+    },
+    {
+      "generous": {
+        "source": "../../src/_base.scss",
         "line": {
           "from": 25,
           "to": 34
@@ -408,7 +402,7 @@
     },
     {
       "generous": {
-        "source": "..\\..\\src\\_fonts.scss",
+        "source": "../../src/_fonts.scss",
         "line": {
           "from": 1,
           "to": 30
@@ -436,7 +430,7 @@
     },
     {
       "generous": {
-        "source": "..\\..\\src\\_palette.scss",
+        "source": "../../src/_palette.scss",
         "line": {
           "from": 1,
           "to": 10
@@ -451,7 +445,7 @@
       "children": [
         {
           "generous": {
-            "source": "..\\..\\src\\_color.scss",
+            "source": "../../src/_color.scss",
             "line": {
               "from": 30,
               "to": 64
@@ -619,7 +613,7 @@
         },
         {
           "generous": {
-            "source": "..\\..\\src\\_color.scss",
+            "source": "../../src/_color.scss",
             "line": {
               "from": 69,
               "to": 102
@@ -787,7 +781,7 @@
         },
         {
           "generous": {
-            "source": "..\\..\\src\\_color.scss",
+            "source": "../../src/_color.scss",
             "line": {
               "from": 107,
               "to": 141
@@ -957,7 +951,7 @@
     },
     {
       "generous": {
-        "source": "..\\..\\src\\index.before.scss",
+        "source": "../../src/index.before.scss",
         "line": {
           "from": 1,
           "to": 10
@@ -972,7 +966,7 @@
       "children": [
         {
           "generous": {
-            "source": "..\\..\\src\\index.blue.scss",
+            "source": "../../src/index.blue.scss",
             "line": {
               "from": 1,
               "to": 27
@@ -1001,7 +995,7 @@
         },
         {
           "generous": {
-            "source": "..\\..\\src\\index.purple.scss",
+            "source": "../../src/index.purple.scss",
             "line": {
               "from": 1,
               "to": 27
