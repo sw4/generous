@@ -12,6 +12,7 @@
     <link href="libs/el/dist/el-base-blue.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="libs/highlight-js.github-styles.min.css">
+    <link rel="stylesheet" href="css/generous.app.min.css">
 
     <script src="libs/angular.1.4.7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
@@ -27,27 +28,27 @@
 
     <!--Navigation Trigger-->
     <button class="btn border-none md-hide lg-hide absolute">
-        <svg width='22' height='22' class='icon-color-current'>
+        <svg width='22' height='22' class='icon icon-color-current'>
             <use xlink:href="dist/assets/svgs/el-icons.svg#icon-1181"></use>
         </svg>
     </button>
 
     <!--Left side Navigation-->
-    <nav class='fixed top-0 bottom-0 left-0 p2 w-px-100 border-right'>
+    <nav class='fixed top-px-0 bottom-px-0 left-px-0 p2 w-px-100 border-right'>
         <!--Menu-->
         <div data-el='dropdown' class='mt2'>
             <input type="checkbox" id="dropdown-items" />
 
             <!--Menu Icon-->
             <label data-el='trigger' for="dropdown-items" class="btn p05 border-none">
-                <label data-el='mask' for="dropdown-items" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90 border border-black'>
+                <label data-el='mask' for="dropdown-items" class='absolute left-px-0 right-px-0 bottom-px-0 top-px-0 bg-white-90 border border-black'>
                 </label>
-            <svg width='22' height='22'>
+            <svg width='22' height='22' class='icon'>
                     <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-1181"></use>
                 </svg>
             </label>
             <label data-el='mask' for="dropdown-items"></label>
-            <div data-el='content' class='p1 w-px-300 bg-white-90 border-right left-px-100 top-px-0 overflow-auto mt0 h-pct-100'>
+            <div data-el='content' class='p1 w-px-300 bg-white-90 border-right left-px-100 top-px-0 bottom-px-0 mt0 overflow-auto mt0'>
                 <div ng-repeat="parent in model.data" class='py1'>
                     <a href class="h6 caps block bold" ng-click="updateView(parent.hash)">
                             {{parent.name}}
@@ -80,9 +81,9 @@
         <div data-el='dropdown' class='mt2'>
             <input type="checkbox" id="dropdown-search" />
             <label data-el='trigger' for="dropdown-search" class="btn p05 border-none">
-                <label data-el='mask' for="dropdown-search" class='absolute left-0 right-0 bottom-0 top-0 bg-white-90 border border-black'>
+                <label data-el='mask' for="dropdown-search" class='absolute left-px-0 right-px-0 bottom-px-0 top-px-0 bg-white-90 border border-black'>
                 </label>
-            <svg width='22' height='22'>
+            <svg width='22' height='22' class="icon">
                     <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-464"></use>
                 </svg>
             </label>
@@ -92,12 +93,23 @@
                 <div class='clearfix bg-white' ng-class="{'filter--active':genSearchActive}">
                     <input id="genSearchInput" type="text" class="left field border-none color-block h5" style='width: 70%' placeholder="Search..." ng-model="genSearchTerm" />
                     <label for="dropdown-search" data-el='mask' ng-click="genSearchTerm=null;genSearchActive=false;" class='right btn border-none'>
-                        <svg width='15' height='15'>
+                        <svg width='15' height='15' class="icon">
                             <use xlink:href="libs/el/dist/assets/svgs/el-icons.svg#icon-883"></use>
                         </svg>
                     </label>
                 </div>
             </div>
+        </div>
+
+        <!--Powered by -->
+        <div class='absolute bottom-px-0 left-px-0 right-px-0 center p1'>
+            <p style="font-size:8px;" class="mb05">Powered by</p>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width='50'>
+                <polygon fill='#006838' points="286.2,201.5 422.8,338 451.8,309 451.8,201.7 451.6,201.5 " />
+                <polygon fill='#39B54A' points="451.8,201.7 451.6,201.5 201.8,451.3 255.7,505.1 451.8,309 " />
+                <polygon fill='#006838' points="60.9,202 60.9,309.7 256,114.6 256,6.9 " />
+                <polygon fill='#39B54A' points="60.9,201.9 60.9,309.7 256.3,505.1 310.2,451.3 " />
+            </svg>
         </div>
     </nav>
 
@@ -117,35 +129,27 @@
 
 
             <!--Search Results-->
-            <section class='p2'>
+            <section class='py2' ng-show="genSearchActive">
                 <div class="clearfix border-bottom">
                     <div class="left">
-                        <div class='h6 caps py1 semi-bold'>
+                        <div class='h6 caps py1 semi-bold center'>
                             Search Results for '{{genSearchTerm}}'
+                            <a href class='h6 py1 center' ng-click="genSearchActive=null">( Cancel search )</a>
                         </div>
                     </div>
-                    <div class="right">
-                        <ul>
-                            <li>
-                                <a href ng-click="genSearchActive=null">(Cancel search)</a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-                <div ng-repeat="result in genSearch track by $index" class='mt3'>
+                <div ng-repeat="result in genSearch track by $index" class='mt3 mb3 border-bottom'>
                     <label for="dropdown-search" data-el='dropdown-overlay' ng-click="updateView(result.hash); genSearchActive=null;">
-                        <p class='h6 caps py1 block cursor-hand semi-bold'>{{result.name}}
-                        </p>
+                        <p class='h5 caps py1 block cursor-hand bold'>{{result.name}}</p>
                     </label>
-                    <code class='h6'>{{result.type}}</code>
+                    <!--<code class='h6'>{{result.type}}</code>-->
                     <p gen-markdown="result.description"></p>
                 </div>
             </section>
 
 
             <main ng-class="{'view--full':!genViewSource, 'view--split':genViewSource && !genSearchActive}">
-                <div class="px2">
-
+                <div class="py2">
                     <section ng-show="!genSearchActive" class='py1'>
                         <!--Page title-->
                         <div class='h5 caps py1 block bold'>{{view.name}}</div>
@@ -261,26 +265,19 @@
                 </div>
             </main>
 
-            <aside id="gen__source" ng-if="genViewSource && !genSearchActive" class="view--split">
-                <ul id="gen__sourceMenu" class="list--inline text--small">
-                    <li ng-if="sourceMap[view[model.options.denominator].source].length>0" class="dropdown__toggle">
-                        <a href>
-                {{sourceMap[view[model.options.denominator].source].length}} other items found in {{view[model.options.denominator].source}}
-            </a>
-                        <ul class="dropdown__menu">
-                            <li ng-repeat="item in sourceMap[view[model.options.denominator].source]" ng-if="hashTable[item].sourceLink!==false">
-                                <a href ng-click="updateView(item)">{{hashTable[item].name}} (line: {{hashTable[item][model.options.denominator].line.from}})</a>
-                            </li>
-                        </ul>
+            <aside ng-if="genViewSource && !genSearchActive" class="fixed top-px-0 bottom-px-0 right-px-0 bg-white-90 w-pct-100 h-pct-100">
+                <div class='h6 caps py1 semi-bold center'>
+                    {{sourceMap[view[model.options.denominator].source].length}} other items found in {{view[model.options.denominator].source}}
+                    <a href class='h6 py1 center' ng-click="sourceLink()">( Close Source View )</a>
+                </div>
+                <ul class="dropdown__menu" ng-if="sourceMap[view[model.options.denominator].source].length>0">
+                    <li ng-repeat="item in sourceMap[view[model.options.denominator].source]" ng-if="hashTable[item].sourceLink!==false">
+                        <a href ng-click="updateView(item)">{{hashTable[item].name}} (line: {{hashTable[item][model.options.denominator].line.from}})</a>
                     </li>
-
-                    <li>
-                        <a href ng-click="sourceLink()" id="genSourceClose">Close Source View</a>
-                    </li>
-
                 </ul>
                 <div id="gen__sourceView">
-                    <div hljs hljs-linums="genSourceLines" source="genSourceCode"></div>
+                    <div hljs hljs-linums="genSourceLines" source="genSourceCode">
+                    </div>
                 </div>
             </aside>
         </div>
