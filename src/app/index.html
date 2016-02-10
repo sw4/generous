@@ -265,18 +265,24 @@
                 </div>
             </main>
 
-            <aside ng-if="genViewSource && !genSearchActive" class="fixed top-px-0 bottom-px-0 right-px-0 bg-white-90 w-pct-100 h-pct-100">
-                <div class='h6 caps py1 semi-bold center'>
-                    {{sourceMap[view[model.options.denominator].source].length}} other items found in {{view[model.options.denominator].source}}
-                    <a href class='h6 py1 center' ng-click="sourceLink()">( Close Source View )</a>
+            <aside ng-if="genViewSource && !genSearchActive" class="fixed top-px-0 bottom-px-0 right-px-0 bg-transparent w-pct-100 h-pct-100 z4">
+                <div class="w-px-200 absolute top-px-0 right-px-400 bottom-px-0 bg-white-90 border-left">
+                    <div class='h6 caps py1 semi-bold center mb1'>
+                        {{sourceMap[view[model.options.denominator].source].length}} items found in
+                        <span style="font-size: 90%;">{{view[model.options.denominator].source}}</span>
+                        <br>
+                        <a href class='h6 py1 center' style="font-size: 80%" ng-click="sourceLink()">( Close Source View )</a>
+                    </div>
+                    <ul ng-if="sourceMap[view[model.options.denominator].source].length>0" class="p1 list-reset">
+                        <li ng-repeat="item in sourceMap[view[model.options.denominator].source]" ng-if="hashTable[item].sourceLink!==false">
+                            <a href class='h6 caps block' ng-click="updateView(item)">{{hashTable[item].name}} (line: {{hashTable[item][model.options.denominator].line.from}})</a>
+                        </li>
+                    </ul>
                 </div>
-                <ul class="dropdown__menu" ng-if="sourceMap[view[model.options.denominator].source].length>0">
-                    <li ng-repeat="item in sourceMap[view[model.options.denominator].source]" ng-if="hashTable[item].sourceLink!==false">
-                        <a href ng-click="updateView(item)">{{hashTable[item].name}} (line: {{hashTable[item][model.options.denominator].line.from}})</a>
-                    </li>
-                </ul>
-                <div id="gen__sourceView">
-                    <div hljs hljs-linums="genSourceLines" source="genSourceCode">
+                <div class="w-px-400 absolute top-px-0 right-px-0 bottom-px-0 bg-white">
+                    <div id="gen__sourceView">
+                        <div hljs hljs-linums="genSourceLines" source="genSourceCode">
+                        </div>
                     </div>
                 </div>
             </aside>
