@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CSS </title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="dist/el-base-blue.min.css">
+    <style>
+        body {
+            font-size: 12px;
+        }
+        
+        .when-chrome-lite,
+        .when-chrome-dark {
+            display: none;
+        }
+        
+        body.chrome-lite {
+            background: white;
+            color: black;
+        }
+        
+        body.chrome-dark {
+            background: black;
+            color: white;
+        }
+        
+        body.chrome-lite .nav-mask {
+            background: black;
+            opacity: 0.1;
+        }
+        
+        body.chrome-dark .nav-mask {
+            background: white;
+            opacity: 0.1;
+        }
+        
+        body.chrome-dark .when-chrome-dark {
+            display: block;
+        }
+        
+        body.chrome-lite .when-chrome-lite {
+            display: block;
+        }
+    </style>
+    <script type="text/javascript">
+        // TODO: Use ready
+        window.readyHandlers = [];
+        window.ready = function ready(handler) {
+            window.readyHandlers.push(handler);
+            handleState();
+        };
+        window.handleState = function handleState() {
+            if (['interactive', 'complete'].indexOf(document.readyState) > -1) {
+                while (window.readyHandlers.length > 0) {
+                    (window.readyHandlers.shift())();
+                }
+            }
+        };
+        document.onreadystatechange = window.handleState;
+        ready(function() {
+            setTimeout(function() {
+                setChrome(false);
+            }, 200)
+        });
+
+        function setChrome(chrome) { //True for Dark theme & False for White theme
+            document.body.className = chrome ? "chrome-dark" : "chrome-lite";
+        }
+
+        function toggleChrome() {
+            document.getElementById('toggleChrome').checked ? setChrome(true) : setChrome(false)
+        }
+    </script>
+</head>
+
+<body>
+    <section class='clearfix'>
+
+        <aside class="dw-px-100 p1 fixed left-0 top-0 bottom-0 z2 nav-section center">
+            <div class='-z1 absolute top-0 bottom-0 left-0 right-0 nav-mask'>
+            </div>
+            <a href="api.html" class='block mt2 mb2'>
+                Logo
+            </a>
+
+            <hr>
+
+            <a href="api.html" class='block mt2 mb2'>
+                Api
+            </a>
+
+            <hr>
+
+            <div data-el='dropdown' class='mt2 mb2'>
+                <input type="checkbox" id="dropdown-items" />
+                <label data-el='trigger' for="dropdown-items" class="btn p05">
+                    <label data-el='mask' for="dropdown-items" class='absolute left-0 right-0 bottom-0 top-0 bg-accent'>
+                    </label>
+                <svg width='22' height='22' class='icon-color-current'>
+                        <use xlink:href="dist/assets/svgs/el-icons.svg#icon-1181"></use>
+                    </svg>
+                </label>
+                <label data-el='mask' for="dropdown-items"></label>
+                <div data-el='content' class='bg-accent p1 dw-px-200'>
+                    <a href="#palette" class="caps block pt05">Palette</a>
+                    <a href="#typography" class="caps block pt05">Typography</a>
+                    <a href="#icons" class="caps block pt05">Icons</a>
+                    <a href="#fonts" class="caps block pt05">Fonts</a>
+                    <a href="#buttons" class="caps block pt05">Buttons & Links</a>
+                    <a href="#forms" class="caps block pt05">Forms</a>
+                    <a href="#grid" class="caps block pt05">12 Column Grid</a>
+                    <a href="#table" class="caps block pt05">Table</a>
+                    <a href="#checkbox" class="caps block pt05">Checkbox</a>
+                    <a href="#radio" class="caps block pt05">Radio</a>
+                    <a href="#accordion" class="caps block pt05">Accordion</a>
+                    <a href="#dropdown" class="caps block pt05 pb05">Dropdown</a>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class='mt2 mb2'>
+                <p class="h6 caps semi-bold">CHROME</p>
+                <div class="pl35">
+                    <div data-el='switch'>
+                        <input id="toggleChrome" type="checkbox" name="toggleChrome" value="toggleChrome" onclick="toggleChrome();">
+                        <label data-el='trigger' for="toggleChrome"></label>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class='mt2 mb2'>
+                <p class="h6 caps semi-bold">THEME</p>
+
+            </div>
+
+        </aside>
+
+        <main class='main-section pl-px-100'>
+            <!-- Palette-->
+            <section id='palette' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">PALETTE</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <style>
+                    .palette {
+                        width: 25px;
+                        height: 25px;
+                    }
+                </style>
+                <div class="clearfix px4">
+                    <div class="col-6">
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black border border-white left mr1'></div> bg-black, border-black, color-black</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-90 left mr1'></div> bg-black-90, border-black-90, color-black-90</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-80 left mr1'></div> bg-black-80, border-black-80, color-black-80</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-70 left mr1'></div> bg-black-70, border-black-70, color-black-70</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-60 left mr1'></div>bg-black-60, border-black-60, color-black-60</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-50 left mr1'></div>bg-black-50, border-black-50, color-black-50</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-40 left mr1'></div>bg-black-40, border-black-40, color-black-40</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-30 left mr1'></div>bg-black-30, border-black-30, color-black-30</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-20 left mr1'></div>bg-black-20, border-black-20, color-black-20</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-black-10 left mr1'></div>bg-black-10, border-black-10, color-black-10</div>
+                    </div>
+                    <div class="col-6">
+
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white border border-black left mr1'></div> bg-white, border-white, color-white</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-90 left mr1'></div> bg-white-90, border-white-90, color-white-90</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-80 left mr1'></div> bg-white-80, border-white-80, color-white-80</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-70 left mr1'></div> bg-white-70, border-white-70, color-white-70</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-60 left mr1'></div>bg-white-60, border-white-60, color-white-60</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-50 left mr1'></div>bg-white-50, border-white-50, color-white-50</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-40 left mr1'></div>bg-white-40, border-white-40, color-white-40</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-30 left mr1'></div>bg-white-30, border-white-30, color-white-30</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-20 left mr1'></div>bg-white-20, border-white-20, color-white-20</div>
+                        <div class='clearfix p1 align-middle'>
+                            <div class='palette bg-white-10 left mr1'></div>bg-white-10, border-white-10, color-white-10</div>
+                    </div>
+                </div>
+            </section>
+
+            <!--typography-->
+            <section id='typography' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">TYPOGRAPHY</span>
+                    <a href="#" class='a-primary right'>Api</a>
+                </section>
+                <div class="clearfix px4">
+
+                    <div class="caps semi-bold h6">
+                        HEADINGS
+                    </div>
+                    <h1>Heading 1</h1>
+                    <h2>Heading 2</h2>
+                    <h3>Heading 3</h3>
+                    <h4>Heading 4</h4>
+                    <h5>Heading 5</h5>
+                    <h6>Heading 6</h6>
+
+                    <div class="caps semi-bold h6 mt2 mb2">
+                        UTILITIES
+                    </div>
+                    <p class="bold">Bold</p>
+                    <p class="regular">Regular</p>
+                    <p class="italic">Italic</p>
+                    <p class="caps">Caps</p>
+                    <p class="left-align">Left align</p>
+                    <p class="center">Center</p>
+                    <p class="right-align">Right align</p>
+                    <p class="justify">
+                        Justify Bacon ipsum dolor sit amet chuck prosciutto landjaeger ham hock filet mignon shoulder hamburger pig venison.
+                    </p>
+                    <p class="nowrap">No wrap</p>
+
+
+                </div>
+            </section>
+
+            <!--ICONS-->
+            <section id='icons' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">Icons</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <style>
+                    .svg-icon {
+                        width: 32px;
+                        height: 32px;
+                    }
+                </style>
+                <div class="clearfix px4">
+                    <div class="clearfix mb1 center">
+                        <div class="col-3 mb1">
+                            <svg class='svg-icon'>
+                                <use xlink:href="dist/assets/svgs/el-icons.svg#icon-002">
+                                </use>
+                            </svg>
+                        </div>
+                        <div class="col-3 mb1">
+                            <svg class='svg-icon'>
+                                <use xlink:href="dist/assets/svgs/el-icons.svg#icon-016"></use>
+                            </svg>
+                        </div>
+                        <div class="col-3 mb1">
+                            <svg class='svg-icon'>
+                                <use xlink:href="dist/assets/svgs/el-icons.svg#icon-026"></use>
+                            </svg>
+                        </div>
+                        <div class="col-3 mb1">
+                            <svg class='svg-icon'>
+                                <use xlink:href="dist/assets/svgs/el-icons.svg#icon-265"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <p class='center'>
+                        TODO: Document - usage for IE9
+                        <br> 1430 SVG Sprite Icons - refer <a href="#" class='a-primary'>Api</a> for full list of icons.
+                    </p>
+                </div>
+            </section>
+
+            <!--FONTS-->
+            <section id='fonts' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">Fonts</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4">
+                    TODO: Explain Choice of Open Sans and Roboto Condensed for heading.
+                </div>
+            </section>
+
+            <!--FONTS-->
+            <section id='buttons' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">Buttons and Links</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4 center">
+                    <button type='button' class='btn mb1'>
+                        Button (.btn)
+                    </button>
+                    <button type='button' class='btn mb1 focused'>
+                        Button (.btn focused)
+                    </button>
+                    <button type='button' class='btn mb1 disabled'>
+                        Button (.btn disabled)
+                    </button>
+
+                    <br>
+                    <br>
+
+                    <button type='button' class='btn mb1 btn-primary'>
+                        Button (.btn primary)
+                    </button>
+
+                    <br>
+                    <br>
+
+                    <button type='button' class='btn mb1 btn-link'>
+                        Button (.btn link)
+                    </button>
+                    <br>
+                    <br>
+
+                    <button type='button' class='btn mb1 btn-sm'>
+                        Button (.btn .btn-sm)
+                    </button>
+
+                    <button type='button' class='btn mb1 btn-md'>
+                        Button (.btn .btn-md)
+                    </button>
+
+                    <button type='button' class='btn mb1 btn-lg'>
+                        Button (.btn .btn-lg)
+                    </button>
+                    <br>
+                    <br>
+                    <a href="#buttons">Anchor</a>
+                    <br>
+                    <br>
+                    <a href="#buttons" class='a-primary'>Anchor Primary (.a-primary)</a>
+                </div>
+            </section>
+
+
+            <!--FORMS-->
+            <section id='forms' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">Forms</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4">
+                    <!--Lite-->
+                    <div class="when-chrome-lite">
+                        <h6 class='caps semi-bold'>Inline</h6>
+                        <form class='clearfix mb3'>
+                            <label for="search">Search: </label>
+                            <input id="search" type="text" class="field">
+                            <button class="btn btn-primary">Go</button>
+                        </form>
+                        <br>
+                        <br>
+                        <h6 class='caps semi-bold'>Stacked</h6>
+                        <form class='clearfix mb3'>
+                            <label>Email:</label>
+                            <input type="text" class="block mb1 field">
+
+                            <label>Password:</label>
+                            <input type="password" class="block mb1 field">
+
+                            <label>Select</label>
+                            <select class="block mb1 field">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                                <option>Option 5</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="reset" class="btn">Cancel</button>
+                        </form>
+                        <br>
+                        <br>
+                        <h6 class='caps semi-bold'>States</h6>
+                        <form class='clearfix mb3'>
+                            <label for 'Disabled'>Disabled: </label>
+                            <input id="Disabled" type="text" class="field block mb1 disabled">
+                            <label for 'Focused'>Focused: </label>
+                            <input id="Focused" type="text" class="field block mb1 focused">
+                            <label for 'Readonly'>Readonly: </label>
+                            <input id="Readonly" type="text" class="field block mb1 readonly">
+                            <label for 'Success'>Success: </label>
+                            <input id="Success" type="text" class="field block mb1 success">
+                            <label for 'Warning'>Warning: </label>
+                            <input id="Warning" type="text" class="field block mb1 warning">
+                            <label for 'Error'>Error: </label>
+                            <input id="Error" type="text" class="field block mb1 error">
+                        </form>
+                    </div>
+
+                    <!--Dark-->
+                    <div class="when-chrome-dark">
+                        <h6 class='caps semi-bold'>Inline</h6>
+                        <form class='clearfix mb3'>
+                            <label for="search">Search: </label>
+                            <input id="search" type="text" class="field dark">
+                            <button class="btn btn-primary">Go</button>
+                        </form>
+                        <br>
+                        <br>
+                        <h6 class='caps semi-bold'>Stacked</h6>
+                        <form class='clearfix mb3'>
+                            <label>Email:</label>
+                            <input type="text" class="block mb1 field dark">
+
+                            <label>Password:</label>
+                            <input type="password" class="block mb1 field dark">
+
+                            <label>Select</label>
+                            <select class="block mb1 field dark">
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                                <option>Option 4</option>
+                                <option>Option 5</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="reset" class="btn">Cancel</button>
+                        </form>
+                        <br>
+                        <br>
+                        <h6 class='caps semi-bold'>States</h6>
+                        <form class='clearfix mb3'>
+                            <label for 'Disabled'>Disabled: </label>
+                            <input id="Disabled" type="text" class="field  dark block mb1 disabled">
+                            <label for 'Focused'>Focused: </label>
+                            <input id="Focused" type="text" class="field dark block mb1 focused">
+                            <label for 'Readonly'>Readonly: </label>
+                            <input id="Readonly" type="text" class="field dark block mb1 readonly">
+                            <label for 'Success'>Success: </label>
+                            <input id="Success" type="text" class="field  dark block mb1 success">
+                            <label for 'Warning'>Warning: </label>
+                            <input id="Warning" type="text" class="field  dark block mb1 warning">
+                            <label for 'Error'>Error: </label>
+                            <input id="Error" type="text" class="field dark block mb1 error">
+                        </form>
+                    </div>
+
+                </div>
+            </section>
+
+            <!--12 column grid-->
+            <section id='grid' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">12 Column Grid</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4">
+                    <!--12-->
+                    <div class="clearfix center">
+                        <div class="col-12 p1">
+                            <div class="bg-black-50 p1">.col-12</div>
+                        </div>
+                    </div>
+                    <!--6 6-->
+                    <div class="clearfix center">
+                        <div class="col-6 p1">
+                            <div class="bg-black-50 p1">.col-6</div>
+                        </div>
+                        <div class="col-6 p1">
+                            <div class="bg-black-50 p1">.col-6</div>
+                        </div>
+                    </div>
+                    <div class="clearfix center">
+                        <div class="col-4 p1">
+                            <div class="bg-black-50 p1">.col-4</div>
+                        </div>
+                        <div class="col-4 p1">
+                            <div class="bg-black-50 p1">.col-4</div>
+                        </div>
+                        <div class="col-4 p1">
+                            <div class="bg-black-50 p1">.col-4</div>
+                        </div>
+                    </div>
+                    <div class="clearfix center">
+                        <div class="col-3 p1">
+                            <div class="bg-black-50 p1">.col-3</div>
+                        </div>
+                        <div class="col-3 p1">
+                            <div class="bg-black-50 p1">.col-3</div>
+                        </div>
+                        <div class="col-3 p1">
+                            <div class="bg-black-50 p1">.col-3</div>
+                        </div>
+                        <div class="col-3 p1">
+                            <div class="bg-black-50 p1">.col-3</div>
+                        </div>
+                    </div>
+                    <div class="clearfix center">
+                        <div class="col-2 p1">
+                            <div class="bg-black-50 p1">.col-2</div>
+                        </div>
+                        <div class="col-2 p1">
+                            <div class="bg-black-50 p1">.col-2</div>
+                        </div>
+                        <div class="col-2 p1">
+                            <div class="bg-black-50 p1">.col-2</div>
+                        </div>
+                        <div class="col-2 p1">
+                            <div class="bg-black-50 p1">.col-2</div>
+                        </div>
+                        <div class="col-2 p1">
+                            <div class="bg-black-50 p1">.col-2</div>
+                        </div>
+                        <div class="col-2 p1">
+                            <div class="bg-black-50 p1">.col-2</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--Table-->
+            <section id='table' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">table</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4">
+                    <div class="when-chrome-lite">
+                        <h6 class='caps semi-bold'>Basic</h6>
+                        <table class='mb2'>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reference Id</th>
+                                    <th>CCY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/01/2016 12:30</td>
+                                    <td>Rederence_001</td>
+                                    <td>EUR</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:31</td>
+                                    <td>Rederence_002</td>
+                                    <td>USD</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:32</td>
+                                    <td>Rederence_003</td>
+                                    <td>GBP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h6 class='caps semi-bold'>Seperated (class='seperated')</h6>
+                        <table class='seperated mb2'>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reference Id</th>
+                                    <th>CCY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/01/2016 12:30</td>
+                                    <td>Rederence_001</td>
+                                    <td>EUR</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:31</td>
+                                    <td>Rederence_002</td>
+                                    <td>USD</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:32</td>
+                                    <td>Rederence_003</td>
+                                    <td>GBP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h6 class='caps semi-bold'>Striped (class='striped')</h6>
+                        <table class='striped mb2'>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reference Id</th>
+                                    <th>CCY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/01/2016 12:30</td>
+                                    <td>Rederence_001</td>
+                                    <td>EUR</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:31</td>
+                                    <td>Rederence_002</td>
+                                    <td>USD</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:32</td>
+                                    <td>Rederence_003</td>
+                                    <td>GBP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="when-chrome-dark">
+                        <h5 class='caps bold'>Basic</h5>
+                        <table class='dark mb2'>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reference Id</th>
+                                    <th>CCY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/01/2016 12:30</td>
+                                    <td>Rederence_001</td>
+                                    <td>EUR</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:31</td>
+                                    <td>Rederence_002</td>
+                                    <td>USD</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:32</td>
+                                    <td>Rederence_003</td>
+                                    <td>GBP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h5 class='caps bold'>Seperated (class='seperated')</h5>
+                        <table class='seperated dark mb2'>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reference Id</th>
+                                    <th>CCY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/01/2016 12:30</td>
+                                    <td>Rederence_001</td>
+                                    <td>EUR</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:31</td>
+                                    <td>Rederence_002</td>
+                                    <td>USD</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:32</td>
+                                    <td>Rederence_003</td>
+                                    <td>GBP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h5 class='caps bold'>Striped (class='striped')</h5>
+                        <table class='striped dark mb2'>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Reference Id</th>
+                                    <th>CCY</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>01/01/2016 12:30</td>
+                                    <td>Rederence_001</td>
+                                    <td>EUR</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:31</td>
+                                    <td>Rederence_002</td>
+                                    <td>USD</td>
+                                </tr>
+                                <tr>
+                                    <td>01/01/2016 12:32</td>
+                                    <td>Rederence_003</td>
+                                    <td>GBP</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!--Checkbox-->
+            <section id='checkbox' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">checkbox</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4">
+                    <div data-el='checkbox'>
+                        <input id="check1" type="checkbox" name="check" value="check1">
+                        <label data-el='trigger' for="check1">Checkbox 1</label>
+                    </div>
+
+                    <div data-el='checkbox'>
+                        <input id="check2" type="checkbox" name="check" value="check2">
+                        <label data-el='trigger' for="check2">Checkbox 2</label>
+                    </div>
+
+                    <div data-el='switch'>
+                        <input id="check3" type="checkbox" name="check" value="check3">
+                        <label data-el='trigger' for="check3">Value 1</label>
+                    </div>
+
+                </div>
+            </section>
+
+            <!--Radio-->
+            <section id='radio' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">Radio</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4">
+                    <div data-el='radio'>
+                        <input id="radio1" type="radio" name="group1" value="radio1">
+                        <label data-el='trigger' for="radio1">Option 1</label>
+                    </div>
+                    <div data-el='radio'>
+                        <input id="radio2" type="radio" name="group1" value="radio2">
+                        <label data-el='trigger' for="radio2">Option 2</label>
+                    </div>
+                </div>
+            </section>
+
+            <!--accordion-->
+            <section id='accordion' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">accordion</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4">
+                    <div class="col-6 py1">
+                        <h5 class='caps bold'>One at a time</h5>
+                        <div data-el='accordion'>
+                            <input type="radio" id="collapse-1" aria-hidden="true" name='groupAccordion' />
+                            <label data-el='trigger' for="collapse-1">Heading 1</label>
+                            <div data-el='content'>
+                                Content 1
+                            </div>
+                        </div>
+                        <div data-el='accordion'>
+                            <input type="radio" id="collapse-2" aria-hidden="true" name='groupAccordion' />
+                            <label data-el='trigger' for="collapse-2">Heading 2</label>
+                            <div data-el='content'>
+                                Content 2
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 py1">
+                        <h5 class='caps bold'>Multiple</h5>
+                        <div data-el='accordion'>
+                            <input type="checkbox" id="collapse-3" aria-hidden="true" />
+                            <label data-el='trigger' for="collapse-3">Heading 1</label>
+                            <div data-el='content'>
+                                Content 1
+                            </div>
+                        </div>
+                        <div data-el='accordion'>
+                            <input type="checkbox" id="collapse-4" aria-hidden="true" />
+                            <label data-el='trigger' for="collapse-4">Heading 2</label>
+                            <div data-el='content'>
+                                Content 2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id='dropdown' class='p3'>
+                <section class='py2'>
+                    <span class="caps bold h5">Dropdown</span>
+                    <a href="#" class='a-primary'>Api</a>
+                </section>
+                <div class="clearfix px4 center">
+                    <div data-el='dropdown'>
+                        <input type="checkbox" id="dropdown-1" />
+                        <label data-el='trigger' for="dropdown-1" class="btn">Dropdown</label>
+                        <label data-el='mask' for="dropdown-1"></label>
+                        <div data-el='content' class='border bg-white-50 p1'>
+                            Content
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class='p4'>
+                &nbsp;
+            </section>
+        </main>
+    </section>
+</body>
+
+</html>
